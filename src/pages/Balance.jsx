@@ -125,7 +125,7 @@ export default function Balance() {
             <div className="w-px h-8 bg-secondary mx-3" />
             <IoIosPricetags className="text-xl" />
             <span className="text-sm sm:text-lg font-bold">
-              250 MMK/GB/Month
+              292 MMK/GB/Month
             </span>
           </div>
 

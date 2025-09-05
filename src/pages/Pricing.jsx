@@ -9,7 +9,7 @@ const Pricing = () => {
       name: "Extra CPU Optimized",
       description:
         "Perfect for balanced workloads with equal CPU and memory needs.",
-      price: "Start at 23 MMK/hour",
+      price: "Start at 24 MMK/hour",
       features: [
         "Designed for burstable and ultra-intensive workloads",
         "Perfect for real-time analytics, high-frequency trading, and simulations",
@@ -25,7 +25,7 @@ const Pricing = () => {
     {
       name: "CPU Optimized",
       description: "Optimized for CPU-intensive workloads.",
-      price: "Start at 38 MMK/hour",
+      price: "Start at 40 MMK/hour",
       features: [
         "Balanced high-performance CPUs for efficient computing",
         "Optimized for sustained workloads with consistent performance",
@@ -42,7 +42,7 @@ const Pricing = () => {
     {
       name: "Balance",
       description: "Enhanced CPU performance for demanding applications.",
-      price: "Start at 68 MMK/ hour",
+      price: "Start at 72 MMK/ hour",
       features: [
         "Well-balanced CPU & RAM ratio for versatile workloads",
         "Optimized for general-purpose applications",
@@ -60,7 +60,7 @@ const Pricing = () => {
     {
       name: "Memory Dense",
       description: "Maximum CPU power for high-performance computing.",
-      price: "Start at 98 MMK/hour",
+      price: "Start at 104 MMK/hour",
       features: [
         "High RAM capacity for memory-intensive applications",
         "Optimized for databases, in-memory caching, and big data analytics",
@@ -77,7 +77,7 @@ const Pricing = () => {
     {
       name: "Memory Dense Plus",
       description: "Ideal for memory-intensive applications.",
-      price: "Start at 128 MMK/hour",
+      price: "Start at 136 MMK/hour",
       features: [
         "Maximum RAM allocation for extreme memory-intensive tasks",
         "Designed for large-scale analytics, real-time processing, and AI workloads",
