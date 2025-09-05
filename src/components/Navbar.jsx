@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // State for mobile menu toggle
@@ -66,39 +67,39 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo on the left */}
           <div className="flex-shrink-0">
-            <a href="/" className="text-xl font-bold ">
+            <Link to="/" className="text-xl font-bold ">
               <img src={logo} className="w-40" alt="OneCloud Logo" />
-            </a>
+            </Link>
           </div>
 
           {/* Middle links (hidden on mobile) */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4 lg:ml-6">
             {/* Navigation links */}
-            <a href="/">
+            <Link to="/">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Home
               </div>
-            </a>
-            <a href="/about-us">
+            </Link>
+            <Link to="/about-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 About Us
               </div>
-            </a>
-            <a href="/products">
+            </Link>
+            <Link to="/products">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Products
               </div>
-            </a>
-            <a href="/solutions">
+            </Link>
+            <Link to="/solutions">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Solutions
               </div>
-            </a>
-            <a href="/pricing">
+            </Link>
+            <Link to="/pricing">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Pricing
               </div>
-            </a>
+            </Link>
 
             {/* Resources Dropdown */}
             <div className="relative" ref={desktopDropdownRef}>
@@ -128,36 +129,36 @@ const Navbar = () => {
               {/* Dropdown menu */}
               {isResourcesOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                  <a
-                    href="#"
+                  <Link
+                    to="#"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Tutorials
-                  </a>
-                  <a
-                    href="/faq"
+                  </Link>
+                  <Link
+                    to="/faq"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     FAQ
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="#"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Product Docs
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
-            <a href="/contact-us">
+            <Link to="/contact-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Contact Sales
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Auth links on the right (hidden on mobile) */}
