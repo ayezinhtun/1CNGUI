@@ -108,7 +108,7 @@ const HeroSession = () => {
               transition: { duration: 0.2 },
             }}
           >
-            Pricing
+            View Pricing
           </motion.a>
         </div>
       </div>
