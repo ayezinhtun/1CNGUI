@@ -164,13 +164,13 @@ const Navbar = () => {
           {/* Auth links on the right (hidden on mobile) */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
             <a
-              href="#"
+              href="https://portal.1cloudng.com/login"
               className="bg-primary hover:shadow-sm hover:bg-transparent hover:border hover:border-primary hover:text-primary text-white px-4 py-2 rounded-lg text-md font-medium"
             >
               Sign In
             </a>
             <a
-              href="#"
+              href="https://portal.1cloudng.com/register"
               className="ml-4 bg-primary hover:shadow-sm hover:bg-transparent hover:border hover:border-primary hover:text-primary text-white px-4 py-2 rounded-lg text-md font-medium"
             >
               Sign Up
