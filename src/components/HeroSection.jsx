@@ -60,7 +60,7 @@ const HeroSession = () => {
           exit={{ y: -10, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          One Cloud Next-Gen
+          One Next-Gen
         </motion.h1>
 
         {/* Animated Subheading */}
