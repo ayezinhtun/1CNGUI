@@ -10,7 +10,7 @@ import { FaSquareCheck } from "react-icons/fa6";
 const filtersList = [
   "By Industry",
   "By Organization",
-  "By Use Case",
+  "Solutions by Use Case",
 ];
 
 const solutions = [
@@ -551,8 +551,10 @@ const categories = [
 const Solutions = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(true);
   const [showMobileFilter, setShowMobileFilter] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const [isSticky, setIsSticky] = useState(true);
   const sentinelRef = useRef(null);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -582,6 +584,14 @@ const Solutions = () => {
       }
     };
   }, []);
+
+  const handleFilterChange = (filterName, isChecked) => {
+    if(isChecked){
+      setSelectedFilters(prev => [...prev, filterName]);
+    }else{
+      setSelectedFilters(prev => prev.filter(f => f !== filterName));
+    }
+  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -685,6 +695,8 @@ const Solutions = () => {
                             <input
                               type="checkbox"
                               className="form-checkbox size-4 accent-blue-600 mr-2"
+                              checked={selectedFilters.includes(filter)}
+                              onChange={(e) => handleFilterChange(filter, e.target.checked)}
                             />
                             <span className="text-base">{filter}</span>
                           </label>
@@ -700,7 +712,15 @@ const Solutions = () => {
           {/* Main content */}
           <div className="lg:col-span-9">
             {/* Solutions Section */}
-            {categories.map((category, index) => (
+            {categories
+            .filter((category) => {
+                // If no filters selected, show all categories
+              if (selectedFilters.length === 0 ) return true;
+
+              // Show category if its name matches any selected filter
+              return selectedFilters.includes(category.name);
+            })
+            .map((category, index) => (
               <div key={index} className="mt-10 lg:mt-14">
                 <div className="mb-4">
                   <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
@@ -716,7 +736,18 @@ const Solutions = () => {
 
                 <div className="mt-7 space-y-10">
                   {solutions
-                    .filter((solution) => solution.category === category.name)
+                    // .filter((solution) => solution.category === category.name)
+                    .filter((solution) => {
+
+                      //filter by category
+                      const matchesCategory = solution.category === category.name;
+
+                      const matchesFilters = selectedFilters.length === 0 ||
+                        selectedFilters.some(filter => solution.category.includes(filter));
+
+                        return matchesCategory && matchesFilters;
+
+                    })
                     .map((solution) => (
                       <div
                         key={solution.id}
