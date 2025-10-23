@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import AnnouncementBanner from "./AnnouncementBanner";
 
 export function Layout({ children }) {
+  
+    const [bannerHeight, setBannerHeight] = useState(0);
   return (
     <div>
-      <Outlet />
-      <Navbar />
+      
+         <AnnouncementBanner onBannerHeight={setBannerHeight} />
+      {/* <AnnouncementBanner/> */}
+      {/* <Navbar/> */}
+        <Navbar bannerHeight={bannerHeight} />
       <main>{children}</main>
       <Footer />
+      <Outlet />
     </div>
   );
 }

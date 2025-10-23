@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({bannerHeight}) => {
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for resources dropdown toggle
@@ -13,6 +13,22 @@ const Navbar = () => {
   // Refs for handling clicks outside dropdowns
   const desktopDropdownRef = useRef(null); // Separate ref for desktop
   const mobileDropdownRef = useRef(null); // Separate ref for mobile
+
+  const [sticky, setSticky] = useState(false);
+
+
+    useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= bannerHeight) {
+        setSticky(true); // fix navbar at top
+      } else {
+        setSticky(false); // normal navbar
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [bannerHeight]);
 
   // Toggle mobile menu visibility
   const toggleMobileMenu = () => {
@@ -58,11 +74,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`navbar text-primary fixed w-full z-50 ${
-        scrolled ? "scrolled" : ""
+     <nav
+      className={`w-full z-50 bg-white transition-all duration-300 ${
+        sticky ? "fixed top-0 shadow-md" : "relative"
       }`}
     >
+
+
+
       <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo on the left */}

@@ -13,6 +13,7 @@ import CPUOptimized from './pages/CPUOptimized';
 import Balance from './pages/Balance';
 import MemoryDense from './pages/MemoryDense';
 import MemoryDensePlus from './pages/MemoryDensePlus';
+import { useRef } from "react";
 
 function App() {
   return (
