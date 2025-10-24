@@ -48,7 +48,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
         {/* Text */}
         <div className="flex-1 text-center md:text-left">
           <h2 className="text-lg md:text-xl font-semibold">
-            One Cloud Next-Gen is Launching Soon!
+            One Cloud Next-Gen is Launching!
           </h2>
           <p className="text-sm md:text-base text-gray-600 mt-1">
             Get ready for powerful, scalable cloud instances with ultra-fast NVMe SSD storage.
