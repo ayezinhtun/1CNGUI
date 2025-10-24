@@ -43,7 +43,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) setHidden(true);
+      if (currentScrollY > lastScrollY && currentScrollY > 100) setHidden(true);
       else if (currentScrollY < lastScrollY) setHidden(false);
       setLastScrollY(currentScrollY);
     };

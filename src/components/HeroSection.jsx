@@ -51,6 +51,8 @@ const HeroSession = () => {
       {/* Background clouds */}
       <div className="clouds"></div>
 
+
+      
       <div className="text-center pt-32 lg:pt-0">
         {/* Main Heading */}
         <motion.h1
