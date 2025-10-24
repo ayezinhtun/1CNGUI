@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "../assets/OneCloud-Logo.png";
 
 export default function AnnouncementBanner({ onBannerHeight }) {
   const [hidden, setHidden] = useState(false);
@@ -33,15 +34,15 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   return (
     <div
       id="announcement-banner"
-      className={`bg-pink-100 text-gray-900 w-full transform transition-transform duration-300 ease-in-out`}
-      style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)" }}
+      className={`text-gray-900 w-full transform transition-transform duration-300 ease-in-out`}
+      style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)", background: "linear-gradient(135deg, #E0F2FE 0%, #B9D9F8 100%)" }}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4 relative">
         {/* Left image */}
         <img
-          src="/path-to-your-image.jpg"
-          alt="Promo"
-          className="w-16 h-16 object-cover rounded-full"
+          src={logo}
+          alt="One Cloud Logo"
+          className="w-40"
         />
 
         {/* Text */}
@@ -57,18 +58,18 @@ export default function AnnouncementBanner({ onBannerHeight }) {
         {/* Button */}
         <a
           href="#"
-          className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 text-sm md:text-base"
+          className="bg-[#ffaa04] text-sm md:text-base relative z-10 text-white font-semibold py-3 px-5 md:px-6 rounded-lg hover:bg-[#e69500] transition duration-300 text-center "
         >
-          SAVE 15% WITH CODE
+          Start Now
         </a>
 
         {/* Close button */}
-        <button
+        {/* <button
           onClick={() => setHidden(true)}
           className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
         >
           ✕
-        </button>
+        </button> */}
       </div>
     </div>
   );
