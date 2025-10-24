@@ -14,21 +14,6 @@ const Navbar = ({bannerHeight}) => {
   const desktopDropdownRef = useRef(null); // Separate ref for desktop
   const mobileDropdownRef = useRef(null); // Separate ref for mobile
 
-  const [sticky, setSticky] = useState(false);
-
-
-    useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= bannerHeight) {
-        setSticky(true); // fix navbar at top
-      } else {
-        setSticky(false); // normal navbar
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [bannerHeight]);
 
   // Toggle mobile menu visibility
   const toggleMobileMenu = () => {
@@ -74,9 +59,10 @@ const Navbar = ({bannerHeight}) => {
   }, []);
 
   return (
-     <nav
-      className={`w-full z-50 bg-white transition-all duration-300 ${
-        sticky ? "fixed top-0 shadow-md" : "relative"
+    
+    <nav
+      className={`navbar text-primary fixed w-full z-50 ${
+        scrolled ? "scrolled" : ""
       }`}
     >
 
