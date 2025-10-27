@@ -87,7 +87,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
       <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex-shrink-0">
-          <img src={banner} alt="Banner Logo" className="h-20 w-auto rounded" />
+          <img src={banner} alt="Banner Logo" className="h-24 w-auto rounded" />
         </div>
 
         <div className="flex flex-col items-center text-center">
