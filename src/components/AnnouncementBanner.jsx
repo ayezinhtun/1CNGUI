@@ -1,19 +1,38 @@
 import React, { useState, useEffect } from "react";
-import logo from "../assets/OneCloud-Logo.png"; // replace with your logo path
+import banner from '../assets/banner.png';
 
 export default function AnnouncementBanner({ onBannerHeight }) {
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Persistent end time (10 days from first visit) stored as timestamp
+  // const [endTime] = useState(() => {
+  //   const saved = localStorage.getItem("bannerEndTime");
+  //   if (saved && !isNaN(Number(saved))) return Number(saved);
+  //   const now = new Date().getTime();
+  //   const newEnd = now + 10 * 24 * 60 * 60 * 1000; // 10 days in ms
+  //   localStorage.setItem("bannerEndTime", newEnd.toString());
+  //   return newEnd;
+  // });
+
+    //   const [endTime] = useState(() => {
+    //   const savedStart = localStorage.getItem("bannerStartTime");
+    //   let start;
+    //   if (savedStart && !isNaN(Number(savedStart))) {
+    //     start = Number(savedStart);
+    //   } else {
+    //     start = new Date().getTime();
+    //     localStorage.setItem("bannerStartTime", start.toString());
+    //   }
+    //   return start + 1 * 24 * 60 * 60 * 1000; 
+    //   }
+
+    // );
+
   const [endTime] = useState(() => {
-    const saved = localStorage.getItem("bannerEndTime");
-    if (saved && !isNaN(Number(saved))) return Number(saved);
-    const now = new Date().getTime();
-    const newEnd = now + 10 * 24 * 60 * 60 * 1000; // 10 days in ms
-    localStorage.setItem("bannerEndTime", newEnd.toString());
-    return newEnd;
+      return new Date("2025-10-28T10:00:00").getTime(); 
   });
+
+
 
   // Countdown state
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -68,7 +87,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
       <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex-shrink-0">
-          <img src={logo} alt="Logo" className="h-10 w-auto" />
+          <img src={banner} alt="Banner Logo" className="h-20 w-auto rounded" />
         </div>
 
         <div className="flex flex-col items-center text-center">
