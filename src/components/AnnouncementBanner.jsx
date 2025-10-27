@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import banner from '../assets/image.png';
+import banner from '../assets/banner.png';
 
 export default function AnnouncementBanner({ onBannerHeight }) {
   const [hidden, setHidden] = useState(false);
@@ -60,7 +60,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
       className={`w-full transform transition-transform duration-300 ease-in-out ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
-      style={{ backgroundColor: "linear-gradient(135deg, #E0F2FE 0%, #B9D9F8 100%)", color: "#fff" }}
+      style={{ backgroundColor: "#1F2937", color: "#fff" }}
     >
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center">
         {/* Left: Logo */}
@@ -93,7 +93,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
               </div>
             </div>
 
-            <div className="text-sm md:text-base font-semibold text-primary pt-3 w-[600px]">
+            <div className="text-sm md:text-base font-semibold text-white pt-3 w-[600px]">
               As part of our soft launch, we’re offering free cloud credits up to 9 lakhs  to early customers who register with us. Slots are limited, secure your access before registration closes on 5 November 2025.
             </div>
           </div>
