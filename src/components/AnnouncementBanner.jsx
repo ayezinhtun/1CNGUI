@@ -57,7 +57,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   return (
     <div
       id="announcement-banner"
-      className={`w-full transform transition-transform duration-300 ease-in-out ${
+      className={`w-full transform transition-transform py-2 duration-300 ease-in-out ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
       style={{ backgroundColor: "#1F2937", color: "#fff" }}
@@ -65,7 +65,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center">
         {/* Left: Logo */}
         <div className="flex justify-center">
-          <img src={banner} alt="Banner Logo" className="h-40 w-auto pt-[2px]" />
+          <img src={banner} alt="Banner Logo" className="h-32 w-auto" />
         </div>
 
         <div className="flex flex-col items-center text-center pt-[2px]">
