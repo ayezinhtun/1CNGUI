@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
 import { Link } from "react-router-dom";
 
-const Navbar = ({bannerHeight}) => {
+const Navbar = ({ bannerHeight }) => {
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for resources dropdown toggle
@@ -17,7 +17,7 @@ const Navbar = ({bannerHeight}) => {
   const [sticky, setSticky] = useState(false);
 
 
-    useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= bannerHeight) {
         setSticky(true); // fix navbar at top
@@ -74,10 +74,9 @@ const Navbar = ({bannerHeight}) => {
   }, []);
 
   return (
-     <nav
-      className={`w-full z-50 bg-white transition-all duration-300 ${
-        sticky ? "fixed top-0 shadow-md" : "relative"
-      }`}
+    <nav
+      className={`w-full z-50 bg-white transition-all duration-300 ${sticky ? "fixed top-0 shadow-md" : "relative"
+        }`}
     >
 
 
@@ -99,11 +98,7 @@ const Navbar = ({bannerHeight}) => {
                 Home
               </div>
             </Link>
-            <Link to="/about-us">
-              <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
-                About Us
-              </div>
-            </Link>
+
             <Link to="/products">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Products
@@ -128,9 +123,8 @@ const Navbar = ({bannerHeight}) => {
               >
                 Resources
                 <svg
-                  className={`w-4 h-4 ml-1 transition-transform ${
-                    isResourcesOpen ? "transform rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-1 transition-transform ${isResourcesOpen ? "transform rotate-180" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -172,6 +166,13 @@ const Navbar = ({bannerHeight}) => {
                 </div>
               )}
             </div>
+
+
+            <Link to="/about-us">
+              <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
+                About Us
+              </div>
+            </Link>
 
             <Link to="/contact-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
@@ -280,9 +281,8 @@ const Navbar = ({bannerHeight}) => {
             >
               Resources
               <svg
-                className={`w-4 h-4 ml-1 transition-transform ${
-                  isResourcesOpen ? "transform rotate-180" : ""
-                }`}
+                className={`w-4 h-4 ml-1 transition-transform ${isResourcesOpen ? "transform rotate-180" : ""
+                  }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
