@@ -58,7 +58,7 @@ const products = [
 
 export default function Products() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
