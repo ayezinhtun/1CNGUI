@@ -47,7 +47,7 @@ const HeroSession = () => {
   }, [index, isDeleting, text]);
 
   return (
-    <div className="flex items-center justify-center lg:h-screen hero-bg pb-16 lg:pb-0 pt-0 md:pt-10 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center hero-bg pb-16 lg:pb-0 pt-0 md:pt-10 px-4 sm:px-6 lg:px-8">
       {/* Background clouds */}
       <div className="clouds"></div>
 
