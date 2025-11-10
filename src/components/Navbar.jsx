@@ -156,13 +156,16 @@ const Navbar = ({ bannerHeight }) => {
                   >
                     FAQ
                   </Link>
-                  <Link
-                    to="https://docs.1cloudng.com/"
+                  <a
+                    // to="https://docs.1cloudng.com/"
+                    href="https://docs.1cloudng.com/"
+                    rel="doc"
+                    target="_blank"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Product Docs
-                  </Link>
+                  </a>
                 </div>
               )}
             </div>
