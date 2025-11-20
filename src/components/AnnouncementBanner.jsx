@@ -11,7 +11,6 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   });
 
 
-
   // Countdown state
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -57,14 +56,14 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   return (
     <div
       id="announcement-banner"
-      className={`w-full transform transition-transform py-2 duration-300 ease-in-out ${
+      className={`w-full transform transition-transform py-3 md:py-2 duration-300 ease-in-out ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
       style={{ backgroundColor: "#1F2937", color: "#fff" }}
     >
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
         {/* Left: Logo */}
-        <div className="flex justify-center">
+        <div className="hidden md:flex justify-center">
           <img src={banner} alt="Banner Logo" className="h-32 w-auto" />
         </div>
 
@@ -72,7 +71,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-3 mb-1">
               {/* Days */}
-              <div className="bg-white text-red-500 px-5 py-1 rounded font-bold text-xl flex flex-col">
+              <div className="bg-white text-red-500 px-3 py-1 md:px-5 md:py-1 rounded font-bold text-lg md:text-xl flex flex-col items-center">
                 {String(timeLeft.days).padStart(2, "0")}
                 <span className="text-xs text-black">DAY</span>
               </div>
@@ -93,7 +92,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
               </div>
             </div>
 
-            <div className="text-sm md:text-base font-semibold text-white pt-3 w-[600px]">
+            <div className="text-sm md:text-base font-semibold text-white pt-3 w-full md:w-[600px]">
               As part of our soft launch, we’re offering free cloud credits up to 9 lakhs  to early customers who register with us. Slots are limited, secure your access before registration closes on 26 November 2025.
             </div>
           </div>
@@ -102,7 +101,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
         </div>
 
         {/* Right: Button with three-line icons */}
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-center gap-3">
           {/* Left three-line icon (mirrored) */}
           <div className="flex flex-col justify-center gap-[3px]">
             <div className="w-4 h-[2px] bg-white rotate-[20deg] origin-right"></div>
