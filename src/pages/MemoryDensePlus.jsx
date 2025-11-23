@@ -58,24 +58,24 @@ const CapsuleTabs = ({ children }) => {
 
 // Data for "Pay as you go" pricing
 const payasyougo = [
-  { md: "MDL1+", vcpu: "1", ram: "8", priceHr: "136", priceMo: "99,572" },
-  { md: "MDL2+", vcpu: "2", ram: "16", priceHr: "273", priceMo: "199,144" },
-  { md: "MDL4+", vcpu: "4", ram: "32", priceHr: "546", priceMo: "398,288" },
-  { md: "MDL8+", vcpu: "8", ram: "64", priceHr: "1,091", priceMo: "796,576" },
-  { md: "MDL12+", vcpu: "12", ram: "96", priceHr: "1,637", priceMo: "1,194,864" },
-  { md: "MDL16+", vcpu: "16", ram: "128", priceHr: "2,182", priceMo: "1,593,152" },
-  { md: "MDL24+", vcpu: "24", ram: "192", priceHr: "3,274", priceMo: "2,389,728" },
+  { md: "eMD1", vcpu: "1", ram: "8", priceHr: "136", priceMo: "99,572" },
+  { md: "eMD2", vcpu: "2", ram: "16", priceHr: "273", priceMo: "199,144" },
+  { md: "eMD4", vcpu: "4", ram: "32", priceHr: "546", priceMo: "398,288" },
+  { md: "eMD8", vcpu: "8", ram: "64", priceHr: "1,091", priceMo: "796,576" },
+  { md: "eMD12", vcpu: "12", ram: "96", priceHr: "1,637", priceMo: "1,194,864" },
+  { md: "eMD16", vcpu: "16", ram: "128", priceHr: "2,182", priceMo: "1,593,152" },
+  { md: "eMD24", vcpu: "24", ram: "192", priceHr: "3,274", priceMo: "2,389,728" },
 ];
 
 // Data for "Reserved Instances" pricing
 const reservedinstances = [
-  { md: "MDL1+", vcpu: "1", ram: "8", priceYr: "995,720" },
-  { md: "MDL2+", vcpu: "2", ram: "16", priceYr: "1,991,440" },
-  { md: "MDL4+", vcpu: "4", ram: "32", priceYr: "3,982,880" },
-  { md: "MDL8+", vcpu: "8", ram: "64", priceYr: "7,965,760" },
-  { md: "MDL12+", vcpu: "12", ram: "96", priceYr: "11,948,640" },
-  { md: "MDL16+", vcpu: "16", ram: "128", priceYr: "15,931,520" },
-  { md: "MDL24+", vcpu: "24", ram: "192", priceYr: "23,897,280" },
+  { md: "eMD1", vcpu: "1", ram: "8", priceYr: "995,720" },
+  { md: "eMD2", vcpu: "2", ram: "16", priceYr: "1,991,440" },
+  { md: "eMD4", vcpu: "4", ram: "32", priceYr: "3,982,880" },
+  { md: "eMD8", vcpu: "8", ram: "64", priceYr: "7,965,760" },
+  { md: "eMD12", vcpu: "12", ram: "96", priceYr: "11,948,640" },
+  { md: "eMD16", vcpu: "16", ram: "128", priceYr: "15,931,520" },
+  { md: "eMD24", vcpu: "24", ram: "192", priceYr: "23,897,280" },
 ];
 
 export default function MemoryDensePlus() {

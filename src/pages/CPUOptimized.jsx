@@ -58,24 +58,24 @@ const CapsuleTabs = ({ children }) => {
 
 // Data for "Pay as you go" pricing
 const payasyougo = [
-  { CPU: "CD1", vcpu: "1", ram: "2", priceHr: "40", priceMo: "29,492" },
-  { CPU: "CD2", vcpu: "2", ram: "4", priceHr: "81", priceMo: "58,984" },
-  { CPU: "CD4", vcpu: "4", ram: "8", priceHr: "162", priceMo: "117,968" },
-  { CPU: "CD8", vcpu: "8", ram: "16", priceHr: "323", priceMo: "235,936" },
-  { CPU: "CD12", vcpu: "12", ram: "24", priceHr: "485", priceMo: "353,904" },
-  { CPU: "CD16", vcpu: "16", ram: "32", priceHr: "646", priceMo: "471,872" },
-  { CPU: "CD24", vcpu: "24", ram: "48", priceHr: "970", priceMo: "707,808" },
+  { CPU: "CO1", vcpu: "1", ram: "2", priceHr: "40", priceMo: "29,492" },
+  { CPU: "CO2", vcpu: "2", ram: "4", priceHr: "81", priceMo: "58,984" },
+  { CPU: "CO4", vcpu: "4", ram: "8", priceHr: "162", priceMo: "117,968" },
+  { CPU: "CO8", vcpu: "8", ram: "16", priceHr: "323", priceMo: "235,936" },
+  { CPU: "CO12", vcpu: "12", ram: "24", priceHr: "485", priceMo: "353,904" },
+  { CPU: "CO16", vcpu: "16", ram: "32", priceHr: "646", priceMo: "471,872" },
+  { CPU: "CO24", vcpu: "24", ram: "48", priceHr: "970", priceMo: "707,808" },
 ];
 
 // Data for "Reserved Instances" pricing
 const reservedinstances = [
-  { CPU: "CD1", vcpu: "1", ram: "2", priceYr: "294,920" },
-  { CPU: "CD2", vcpu: "2", ram: "4", priceYr: "589,840" },
-  { CPU: "CD4", vcpu: "4", ram: "8", priceYr: "1,179,680" },
-  { CPU: "CD8", vcpu: "8", ram: "16", priceYr: "2,359,360" },
-  { CPU: "CD12", vcpu: "12", ram: "24", priceYr: "3,539,040" },
-  { CPU: "CD16", vcpu: "16", ram: "32", priceYr: "4,718,720" },
-  { CPU: "CD24", vcpu: "24", ram: "48", priceYr: "7,078,080" },
+  { CPU: "CO1", vcpu: "1", ram: "2", priceYr: "294,920" },
+  { CPU: "CO2", vcpu: "2", ram: "4", priceYr: "589,840" },
+  { CPU: "CO4", vcpu: "4", ram: "8", priceYr: "1,179,680" },
+  { CPU: "CO8", vcpu: "8", ram: "16", priceYr: "2,359,360" },
+  { CPU: "CO12", vcpu: "12", ram: "24", priceYr: "3,539,040" },
+  { CPU: "CO16", vcpu: "16", ram: "32", priceYr: "4,718,720" },
+  { CPU: "CO24", vcpu: "24", ram: "48", priceYr: "7,078,080" },
 ];
 
 // Main component for the CPU-Optimized page

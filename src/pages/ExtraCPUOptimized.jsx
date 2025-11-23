@@ -59,26 +59,26 @@ const CapsuleTabs = ({ children }) => {
 
 // Data for "Pay as you go" pricing
 const payasyougo = [
-  { extraCPU: "CD1+", vcpu: "1", ram: "1", priceHr: "24", priceMo: "17,812" },
-  { extraCPU: "CD2+", vcpu: "2", ram: "2", priceHr: "49", priceMo: "35,624" },
-  { extraCPU: "CD4+", vcpu: "4", ram: "4", priceHr: "98", priceMo: "71,248" },
-  { extraCPU: "CD8+", vcpu: "8", ram: "8", priceHr: "195", priceMo: "142,496" },
+  { extraCPU: "eCO1", vcpu: "1", ram: "1", priceHr: "24", priceMo: "17,812" },
+  { extraCPU: "eCO2", vcpu: "2", ram: "2", priceHr: "49", priceMo: "35,624" },
+  { extraCPU: "eCO4", vcpu: "4", ram: "4", priceHr: "98", priceMo: "71,248" },
+  { extraCPU: "eCO8", vcpu: "8", ram: "8", priceHr: "195", priceMo: "142,496" },
   {
-    extraCPU: "CD12+",
+    extraCPU: "eCO12",
     vcpu: "12",
     ram: "12",
     priceHr: "293",
     priceMo: "213,744",
   },
   {
-    extraCPU: "CD16+",
+    extraCPU: "eCO16",
     vcpu: "16",
     ram: "16",
     priceHr: "390",
     priceMo: "284,992",
   },
   {
-    extraCPU: "CD24+",
+    extraCPU: "eCO24",
     vcpu: "24",
     ram: "24",
     priceHr: "586",
@@ -88,13 +88,13 @@ const payasyougo = [
 
 // Data for "Reserved Instances" pricing
 const reservedinstances = [
-  { extraCPU: "CD1+", vcpu: "1", ram: "1", priceYr: "178,120" },
-  { extraCPU: "CD2+", vcpu: "2", ram: "2", priceYr: "356,240" },
-  { extraCPU: "CD4+", vcpu: "4", ram: "4", priceYr: "712,480" },
-  { extraCPU: "CD8+", vcpu: "8", ram: "8", priceYr: "1,424,960" },
-  { extraCPU: "CD12+", vcpu: "12", ram: "12", priceYr: "2,137,440" },
-  { extraCPU: "CD16+", vcpu: "16", ram: "16", priceYr: "2,849,920" },
-  { extraCPU: "CD24+", vcpu: "24", ram: "24", priceYr: "4,274,880" },
+  { extraCPU: "eCO1", vcpu: "1", ram: "1", priceYr: "178,120" },
+  { extraCPU: "eCO2", vcpu: "2", ram: "2", priceYr: "356,240" },
+  { extraCPU: "eCO4", vcpu: "4", ram: "4", priceYr: "712,480" },
+  { extraCPU: "eCO8", vcpu: "8", ram: "8", priceYr: "1,424,960" },
+  { extraCPU: "eCO12", vcpu: "12", ram: "12", priceYr: "2,137,440" },
+  { extraCPU: "eCO16", vcpu: "16", ram: "16", priceYr: "2,849,920" },
+  { extraCPU: "eCO24", vcpu: "24", ram: "24", priceYr: "4,274,880" },
 ];
 
 // Main component for rendering the page
