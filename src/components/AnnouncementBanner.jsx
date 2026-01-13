@@ -93,7 +93,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
             </div>
 
             <div className="text-sm md:text-base font-semibold text-white pt-3 w-full md:w-full lg:w-[600px]">
-              As part of our soft launch, we’re offering free cloud credits up to 9 lakhs  to early customers who register with us. Slots are limited, secure your access before registration closes on 26 November 2025.
+              As part of our soft launch, we’re offering free cloud credits up to 9 lakhs  to early customers who register with us. Slots are limited, secure your access before registration closes on 15 February 2026.
             </div>
           </div>
 
