@@ -7,7 +7,7 @@ export default function AnnouncementBanner({ onBannerHeight }) {
 
 
   const [endTime] = useState(() => {
-      return new Date("2025-11-26T10:00:00").getTime(); 
+      return new Date("2026-02-15T00:00:00").getTime(); 
   });
 
 

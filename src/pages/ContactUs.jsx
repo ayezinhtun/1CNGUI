@@ -48,7 +48,7 @@ const ContactUs = () => {
               {/* Form Submission */}
               <form 
                 action="https://formsubmit.co/sales@1cloudng.com" 
-                method="POST" 
+                method="POST"
                 className="space-y-6 flex-grow flex flex-col"
               >
                 {/* Name Input */}
@@ -187,7 +187,7 @@ const ContactUs = () => {
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
                 <iframe
                   title="Cloud Services Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.821126498639!2d96.12343247381386!3d16.78557261986579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb721134a609%3A0xa1f4e17e0914ebcb!2sOne%20Cloud%20Company%20Limited!5e0!3m2!1sen!2smm!4v1742131153290!5m2!1sen!2smm"
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61109.386459155736!2d96.0899932423585!3d16.80964689980473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20AI%20Avenue%2C%20Innovation%20District%2C%20Yangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1766566523944!5m2!1sen!2smm" 
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: '300px' }}
