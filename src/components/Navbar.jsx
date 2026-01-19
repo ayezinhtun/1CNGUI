@@ -169,7 +169,7 @@ const Navbar = ({ bannerHeight }) => {
 
                   <a
                     // to="https://docs.1cloudng.com/"
-                    href="https://onecloudtechnology-my.sharepoint.com/:b:/g/personal/hninyadanahtwe_1cloudng_com/IQDFl7GI3-F8RaCl_3oaFykqAfnMdyG1O_oQ_bKfuG_ZhKU?e=CTIxkR"
+                    href="/files/1CNG_Cloud Services Agreement.pdf"
                     rel="doc"
                     target="_blank"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
@@ -177,6 +177,10 @@ const Navbar = ({ bannerHeight }) => {
                   >
                     Cloud Service Agreement
                   </a>
+
+                  
+
+                  
                 </div>
               )}
             </div>
