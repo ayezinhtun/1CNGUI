@@ -141,13 +141,13 @@ const Navbar = ({ bannerHeight }) => {
 
               {/* Dropdown menu */}
               {isResourcesOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                <div className="absolute right-0 mt-2 w-[220px] bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
                   <Link
                     to="#"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
-                    Tutorials
+                    Best Practise
                   </Link>
                   <Link
                     to="/faq"
@@ -165,6 +165,17 @@ const Navbar = ({ bannerHeight }) => {
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Product Docs
+                  </a>
+
+                  <a
+                    // to="https://docs.1cloudng.com/"
+                    href="https://onecloudtechnology-my.sharepoint.com/:b:/g/personal/hninyadanahtwe_1cloudng_com/IQDFl7GI3-F8RaCl_3oaFykqAfnMdyG1O_oQ_bKfuG_ZhKU?e=CTIxkR"
+                    rel="doc"
+                    target="_blank"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    onClick={() => setIsResourcesOpen(false)}
+                  >
+                    Cloud Service Agreement
                   </a>
                 </div>
               )}
