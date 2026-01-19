@@ -169,7 +169,7 @@ const Navbar = ({ bannerHeight }) => {
 
                   <a
                     // to="https://docs.1cloudng.com/"
-                    href="/files/1CNG_Cloud Services Agreement.pdf"
+                    href="/files/1CNG_Cloud_Services_Agreement.pdf"
                     rel="doc"
                     target="_blank"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
