@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
 
 const Pricing = ({ bannerHeight }) => {
   const { hash } = useLocation();
