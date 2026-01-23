@@ -144,7 +144,8 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
                 <div className="absolute right-0 mt-2 w-[220px] bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
                   <Link
                     to="#"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    disabled
+                    className="block w-full text-left px-4 py-2 text-gray-800 cursor-not-allowed"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Best Practise
@@ -178,8 +179,8 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
                     Cloud Service Agreement
                   </a>
 
-                
-                  
+
+
                 </div>
               )}
             </div>
