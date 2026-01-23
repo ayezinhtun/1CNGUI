@@ -36,16 +36,33 @@ export default function AnnouncementBanner({ onBannerHeight }) {
   }, [endTime]);
 
   // Scroll hide/show
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
+  //     if (currentScrollY > lastScrollY && currentScrollY > 100) setHidden(true);
+  //     else if (currentScrollY < lastScrollY) setHidden(false);
+  //     setLastScrollY(currentScrollY);
+  //   };
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [lastScrollY]);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) setHidden(true);
-      else if (currentScrollY < lastScrollY) setHidden(false);
-      setLastScrollY(currentScrollY);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  const handleScroll = () => {
+    const bannerEl = document.getElementById("announcement-banner");
+    const bannerHeight = bannerEl?.offsetHeight || 0;
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > bannerHeight) setHidden(true);
+    else if (currentScrollY < lastScrollY) setHidden(false);
+
+    setLastScrollY(currentScrollY);
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [lastScrollY]);
+
 
   // Send banner height to parent
   useEffect(() => {

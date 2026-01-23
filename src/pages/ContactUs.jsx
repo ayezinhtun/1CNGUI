@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
+import { useLocation } from 'react-router-dom';
 
-const ContactUs = () => {
+const ContactUs = ({bannerHeight}) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
   return (
-    <div className="min-h-screen">
+    <div id='contact' className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -46,8 +58,8 @@ const ContactUs = () => {
             <div className="bg-white rounded-2xl shadow-xl p-8 flex-grow flex flex-col">
               <h2 className="text-2xl font-bold text-primary mb-6">Send Us a Message</h2>
               {/* Form Submission */}
-              <form 
-                action="https://formsubmit.co/sales@1cloudng.com" 
+              <form
+                action="https://formsubmit.co/sales@1cloudng.com"
                 method="POST"
                 className="space-y-6 flex-grow flex flex-col"
               >
@@ -187,7 +199,7 @@ const ContactUs = () => {
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
                 <iframe
                   title="Cloud Services Location"
-                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61109.386459155736!2d96.0899932423585!3d16.80964689980473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20AI%20Avenue%2C%20Innovation%20District%2C%20Yangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1766566523944!5m2!1sen!2smm" 
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61109.386459155736!2d96.0899932423585!3d16.80964689980473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20AI%20Avenue%2C%20Innovation%20District%2C%20Yangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1766566523944!5m2!1sen!2smm"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: '300px' }}

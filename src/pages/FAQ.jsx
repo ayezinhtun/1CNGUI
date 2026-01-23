@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const questions = [
   {
@@ -535,7 +536,19 @@ const categories = [
   "Does 1CNG support user self-managed portal?",
 ];
 
-const FAQ = () => {
+const FAQ = ({bannerHeight}) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
   const [selectedCategory, setSelectedCategory] = useState("Filter");
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
@@ -569,7 +582,7 @@ const FAQ = () => {
   return (
     <>
       {/* Main Container */}
-      <div className="min-h-screen">
+      <div id="faq" className="min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <>
             {/* Header Section */}
@@ -605,9 +618,8 @@ const FAQ = () => {
                       <span>{selectedCategory || "Filter"}</span>
                     </div>
                     <FaChevronDown
-                      className={`transition-transform ${
-                        isOpen ? "transform rotate-180" : ""
-                      }`}
+                      className={`transition-transform ${isOpen ? "transform rotate-180" : ""
+                        }`}
                     />
                   </div>
                   {isOpen && (
@@ -685,9 +697,8 @@ const FAQ = () => {
                         <button
                           key={i}
                           onClick={() => setCurrentPage(i)}
-                          className={`px-4 py-2 border-l border-gray-200 hover:bg-gray-100 ${
-                            currentPage === i ? "font-bold text-blue-800" : ""
-                          }`}
+                          className={`px-4 py-2 border-l border-gray-200 hover:bg-gray-100 ${currentPage === i ? "font-bold text-blue-800" : ""
+                            }`}
                         >
                           {i}
                         </button>

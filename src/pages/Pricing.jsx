@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
-const Pricing = () => {
+const Pricing = ({ bannerHeight }) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = hash === "#prices" ? 0 : bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
+
+
   // Pricing plans data
   const plans = [
     {
@@ -16,7 +31,7 @@ const Pricing = () => {
         "Higher core count for parallel processing",
         "Best for enterprise-level and mission-critical applications",
       ],
-      link: "/extra-cpu-optimized",
+      link: "/extra-cpu-optimized#extra-cpu",
       textColor: "text-[#AE76B5]",
       borderColor: "border-[#7030A0]",
       color: "bg-gradient-to-b from-[#AE76B5] to-indigo-800",
@@ -33,7 +48,7 @@ const Pricing = () => {
         "Lower latency for compute-heavy applications",
         "Scalable for growing business needs",
       ],
-      link: "/cpu-optimized",
+      link: "/cpu-optimized#cpu",
       textColor: "text-[#73BFA3]",
       borderColor: "border-[#00B050]",
       color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
@@ -50,7 +65,7 @@ const Pricing = () => {
         "Cost-effective solution for medium workloads",
         "Scalable resources to adapt to business growth",
       ],
-      link: "/balance",
+      link: "/balance#balance",
       textColor: "text-[#73BFA3]",
       borderColor: "border-[#00B050]",
       color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
@@ -68,7 +83,7 @@ const Pricing = () => {
         "Ensures smooth performance for enterprise applications",
         "Scalable for growing memory demands",
       ],
-      link: "/memory-dense",
+      link: "/memory-dense#memory",
       textColor: "text-[#73BFA3]",
       borderColor: "border-[#00B050]",
       color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
@@ -85,7 +100,7 @@ const Pricing = () => {
         "Best for high-demand enterprise applications and mission-critical systems",
         "Optimized for ultra-high memory efficiency and performance",
       ],
-      link: "/memory-dense-plus",
+      link: "/memory-dense-plus#memory-dense-plus",
       textColor: "text-[#EC9C43]",
       borderColor: "border-[#F79646]",
       color: "bg-gradient-to-b from-[#EC9C43] to-orange-600",
@@ -94,7 +109,7 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div id="pricing" className="min-h-screen scroll-mt-24">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -119,16 +134,16 @@ const Pricing = () => {
           Enjoy flat rates with no hidden fees. All charges are in MMK (local
           currency), ensuring clear and convenient cost management.
         </p>
-        <a href="/pricing">
+        <a href="https://portal.1cloudng.com/login" target="_blank">
           <button className="relative z-10 mt-4 text-sm md:text-base bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-[#e69900]">
             Get Started
           </button>
         </a>
       </div>
 
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 scroll-mt-24">
         {/* Section Header */}
-        <div className="flex flex-col items-center">
+        <div id="prices" className="flex flex-col items-center scroll-mt-24">
           <motion.h2
             className="text-3xl font-semibold text-primary text-center mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -141,12 +156,12 @@ const Pricing = () => {
             Let our sales team assist you in selecting the perfect combination
             of cloud services tailored to your business needs.
           </p>
-          <a
-            href="/contact-us"
+          <Link
+            to="/contact-us#contact"
             className="mt-4 bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-[#e69900]"
           >
             Contact Sales
-          </a>
+          </Link>
         </div>
         {/* Pricing Grid */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -1,16 +1,17 @@
 import { FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosPricetags } from "react-icons/io";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Tab component for rendering individual tabs
 const Tab = ({ label, active, onClick }) => {
   return (
     <button
-      className={`px-4 py-2 rounded-full text-sm md:text-base transition-colors ${
-        active
+      className={`px-4 py-2 rounded-full text-sm md:text-base transition-colors ${active
           ? "bg-gray-200 text-black font-semibold shadow-md hover:bg-secondary hover:text-white"
           : "text-gray-700 hover:bg-secondary hover:text-white"
-      }`}
+        }`}
       onClick={onClick}
     >
       {label}
@@ -78,9 +79,20 @@ const reservedinstances = [
   { md: "MD24", vcpu: "24", ram: "144", priceYr: "18,290,880" },
 ];
 
-export default function MemoryDense() {
+export default function MemoryDense({ bannerHeight }) {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen" id="memory">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex items-center py-10 md:py-14"
@@ -156,9 +168,11 @@ export default function MemoryDense() {
                         <td className="p-3 font-semibold">{plan.priceHr}</td>
                         <td className="p-3 font-semibold">{plan.priceMo}</td>
                         <td className="p-3">
-                          <button className="p-2 rounded-full bg-secondary text-sm text-white hover:bg-blue-700 ">
-                            <FaArrowRight />
-                          </button>
+                          <Link target="blank" to='https://portal.1cloudng.com/login?redirectUrl=/'>
+                            <button className="p-2 rounded-full bg-secondary text-sm text-white hover:bg-blue-700 ">
+                              <FaArrowRight />
+                            </button>
+                          </Link>
                         </td>
                       </tr>
                     ))}

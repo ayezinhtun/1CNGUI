@@ -9,12 +9,14 @@ export function Layout({ children }) {
     const [bannerHeight, setBannerHeight] = useState(0);
   return (
     <div>
+
+      
       
          <AnnouncementBanner onBannerHeight={setBannerHeight} />
       {/* <AnnouncementBanner/> */}
       {/* <Navbar/> */}
         <Navbar bannerHeight={bannerHeight} />
-      <main>{children}</main>
+      <main>{React.cloneElement(children, { bannerHeight })}</main>
       <Footer />
       <Outlet />
     </div>

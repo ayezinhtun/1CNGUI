@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { HiInboxArrowDown } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { GiSettingsKnobs } from "react-icons/gi";
@@ -53,11 +53,11 @@ const solutions = [
         </div>
         <div className="flex"><FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" /> Dedicated compute for sensitive operations</div>
         <div className="flex">
-        <FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" />
+          <FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" />
           <div><a href="/pricing" className="text-blue-600">
             Reserved instance
           </a>&nbsp;
-          pricing for predictable costs
+            pricing for predictable costs
           </div>
         </div>
         <div className="flex"><FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" /> DR-ready architecture</div>
@@ -177,7 +177,7 @@ const solutions = [
           <li>
             Fast deployment with local support
             <br /><div className="flex leading-6 md:leading-8 md:items-center"><FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" />Perfect for retail shops, service providers, and small
-            offices</div>
+              offices</div>
           </li>
         </ul>
       </>
@@ -205,7 +205,7 @@ const solutions = [
           <li>
             Ideal for staging, CI/CD, and dynamic workloads
             <br /><div className="flex leading-6 md:leading-8 md:items-center"><FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" /> Tailored for developers, SaaS startups, and local tech
-            teams</div>
+              teams</div>
           </li>
         </ul>
       </>
@@ -288,7 +288,7 @@ const solutions = [
           </li>
         </ul>
         <div className="flex">
-        <FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" /> Ideal for agencies, app developers, and product engineering teams
+          <FaSquareCheck size="20px" color="#283E80" className="mr-1 shrink-0" /> Ideal for agencies, app developers, and product engineering teams
         </div>
         <div className="font-bold pt-2">
           Focus on coding—we’ll handle the infrastructure.
@@ -548,7 +548,19 @@ const categories = [
   },
 ];
 
-const Solutions = () => {
+const Solutions = ({bannerHeight}) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
   const [isFilterOpen, setIsFilterOpen] = useState(true);
   const [showMobileFilter, setShowMobileFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -586,15 +598,15 @@ const Solutions = () => {
   }, []);
 
   const handleFilterChange = (filterName, isChecked) => {
-    if(isChecked){
+    if (isChecked) {
       setSelectedFilters(prev => [...prev, filterName]);
-    }else{
+    } else {
       setSelectedFilters(prev => prev.filter(f => f !== filterName));
     }
   }
 
   return (
-    <div className="min-h-screen">
+    <div id="solutions" className="min-h-screen">
       <div className="max-w-7xl mx-auto pt-10 pb-20 px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="md:pt-10 ">
@@ -618,7 +630,7 @@ const Solutions = () => {
                 Talk to a Cloud Specialist
               </button>
             </Link>
-            <Link to="/pricing" className="ml-4">
+            <Link to="/pricing#pricing" className="ml-4">
               <button className="bg-white text-xs sm:text-base text-accent px-2 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-full font-bold hover:bg-accent hover:text-white transition-all duration-300">
                 Explore Pricing
               </button>
@@ -642,135 +654,133 @@ const Solutions = () => {
           <div className="lg:col-span-3 lg:mt-8">
             {/* Offcanvas for mobile */}
             <div
-              className={`fixed inset-0 z-40 bg-black bg-opacity-30 transition-opacity ${
-                showMobileFilter ? "opacity-100 visible" : "opacity-0 invisible"
-              } lg:hidden`}
+              className={`fixed inset-0 z-40 bg-black bg-opacity-30 transition-opacity ${showMobileFilter ? "opacity-100 visible" : "opacity-0 invisible"
+                } lg:hidden`}
               onClick={() => setShowMobileFilter(false)}
             />
-            
-              <div
-                className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-white lg:bg-transparent border-r shadow transform transition-transform duration-300 py-4 lg:translate-x-0 lg:w-full lg:shadow-none lg:border-none ${
-                  showMobileFilter ? "translate-x-0" : "-translate-x-full"
+
+            <div
+              className={`fixed top-0 left-0 bottom-0 z-50 w-72 bg-white lg:bg-transparent border-r shadow transform transition-transform duration-300 py-4 lg:translate-x-0 lg:w-full lg:shadow-none lg:border-none ${showMobileFilter ? "translate-x-0" : "-translate-x-full"
                 }
                 ${isSticky ? "lg:sticky lg:top-28" : "lg:relative lg:top-auto"}`}
-              >
-                {/* Close button for mobile */}
-                <div className="flex justify-between items-center px-4 mb-4 lg:hidden">
-                  <h2 className="text-base">FILTER BY</h2>
-                  <button onClick={() => setShowMobileFilter(false)}>
-                    <X />
-                  </button>
+            >
+              {/* Close button for mobile */}
+              <div className="flex justify-between items-center px-4 mb-4 lg:hidden">
+                <h2 className="text-base">FILTER BY</h2>
+                <button onClick={() => setShowMobileFilter(false)}>
+                  <X />
+                </button>
+              </div>
+
+              <div className=" bg-white lg:border lg:rounded-lg lg:shadow-md py-4">
+                {/* Filters Title */}
+                <div className="mb-4 hidden lg:block">
+                  <h2 className="text-base px-4 mb-3">FILTER BY</h2>
+                  <hr className="border-gray-300" />
                 </div>
 
-                <div className=" bg-white lg:border lg:rounded-lg lg:shadow-md py-4">
-                  {/* Filters Title */}
-                  <div className="mb-4 hidden lg:block">
-                    <h2 className="text-base px-4 mb-3">FILTER BY</h2>
-                    <hr className="border-gray-300" />
-                  </div>
-
-                  {/* Filter By Toggle */}
-                  <div
-                    className="flex items-center justify-between cursor-pointer px-4 py-1"
-                    onClick={() => setIsFilterOpen(!isFilterOpen)}
-                  >
-                    <h3 className="text-base font-semibold tracking-wide text-black">
-                      Filters
-                    </h3>
-                    {isFilterOpen ? (
-                      <ChevronUp size={18} />
-                    ) : (
-                      <ChevronDown size={18} />
-                    )}
-                  </div>
-
-                  {/* Scrollable Filter List */}
-                  {isFilterOpen && (
-                    <div className="max-h-[calc(100vh-250px)] overflow-y-auto space-y-2 scrollbar-hide">
-                      {filtersList.map((filter, i) => (
-                        <div key={i} className="w-full  hover:bg-gray-100 transition">
-                          <label
-                            className="flex items-center px-4 py-3 cursor-pointer"
-                          >
-                            <input
-                              type="checkbox"
-                              className="form-checkbox size-4 accent-blue-600 mr-2"
-                              checked={selectedFilters.includes(filter)}
-                              onChange={(e) => handleFilterChange(filter, e.target.checked)}
-                            />
-                            <span className="text-base">{filter}</span>
-                          </label>
-                        </div>
-                      ))}
-                    </div>
+                {/* Filter By Toggle */}
+                <div
+                  className="flex items-center justify-between cursor-pointer px-4 py-1"
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                >
+                  <h3 className="text-base font-semibold tracking-wide text-black">
+                    Filters
+                  </h3>
+                  {isFilterOpen ? (
+                    <ChevronUp size={18} />
+                  ) : (
+                    <ChevronDown size={18} />
                   )}
                 </div>
+
+                {/* Scrollable Filter List */}
+                {isFilterOpen && (
+                  <div className="max-h-[calc(100vh-250px)] overflow-y-auto space-y-2 scrollbar-hide">
+                    {filtersList.map((filter, i) => (
+                      <div key={i} className="w-full  hover:bg-gray-100 transition">
+                        <label
+                          className="flex items-center px-4 py-3 cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            className="form-checkbox size-4 accent-blue-600 mr-2"
+                            checked={selectedFilters.includes(filter)}
+                            onChange={(e) => handleFilterChange(filter, e.target.checked)}
+                          />
+                          <span className="text-base">{filter}</span>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            
+            </div>
+
           </div>
 
           {/* Main content */}
           <div className="lg:col-span-9">
             {/* Solutions Section */}
             {categories
-            .filter((category) => {
+              .filter((category) => {
                 // If no filters selected, show all categories
-              if (selectedFilters.length === 0 ) return true;
+                if (selectedFilters.length === 0) return true;
 
-              // Show category if its name matches any selected filter
-              return selectedFilters.includes(category.name);
-            })
-            .map((category, index) => (
-              <div key={index} className="mt-10 lg:mt-14">
-                <div className="mb-4">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
-                    {category.name}
-                  </h2>
-                </div>
-                <div className="text-secondary text-md sm:text-lg">
-                  {category.title}
-                </div>
-                <div className="text-secondary text-md sm:text-lg">
-                  {category.description}
-                </div>
+                // Show category if its name matches any selected filter
+                return selectedFilters.includes(category.name);
+              })
+              .map((category, index) => (
+                <div key={index} className="mt-10 lg:mt-14">
+                  <div className="mb-4">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
+                      {category.name}
+                    </h2>
+                  </div>
+                  <div className="text-secondary text-md sm:text-lg">
+                    {category.title}
+                  </div>
+                  <div className="text-secondary text-md sm:text-lg">
+                    {category.description}
+                  </div>
 
-                <div className="mt-7 space-y-10">
-                  {solutions
-                    // .filter((solution) => solution.category === category.name)
-                    .filter((solution) => {
+                  <div className="mt-7 space-y-10">
+                    {solutions
+                      // .filter((solution) => solution.category === category.name)
+                      .filter((solution) => {
 
-                      //filter by category
-                      const matchesCategory = solution.category === category.name;
+                        //filter by category
+                        const matchesCategory = solution.category === category.name;
 
-                      const matchesFilters = selectedFilters.length === 0 ||
-                        selectedFilters.some(filter => solution.category.includes(filter));
+                        const matchesFilters = selectedFilters.length === 0 ||
+                          selectedFilters.some(filter => solution.category.includes(filter));
 
                         return matchesCategory && matchesFilters;
 
-                    })
-                    .map((solution) => (
-                      <div
-                        key={solution.id}
-                        className="bg-white/80 backdrop-blur-md rounded-2xl border border-white/20 p-6 shadow-md flex flex-col h-full hover:shadow-xl"
-                      >
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-primary">
-                            {solution.title}
-                          </h3>
+                      })
+                      .map((solution) => (
+                        <div
+                          key={solution.id}
+                          className="bg-white/80 backdrop-blur-md rounded-2xl border border-white/20 p-6 shadow-md flex flex-col h-full hover:shadow-xl"
+                        >
+                          <div className="mb-4">
+                            <h3 className="text-xl font-bold text-primary">
+                              {solution.title}
+                            </h3>
+                          </div>
+                          <div className="text-gray-600 text-left flex-grow">
+                            {solution.description}
+                          </div>
                         </div>
-                        <div className="text-gray-600 text-left flex-grow">
-                          {solution.description}
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
         <div ref={sentinelRef} id="sentinel" className="h-1" />
       </div>
-      
+
     </div>
   );
 };

@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import TeamStructure from "../components/TeamStructure";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const AboutUs = () => {
+const AboutUs = ({bannerHeight}) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight; 
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
   return (
-    <div>
+    <div id="about">
       {/* Who We Are and Our Mission Section */}
       <section className="lg:h-screen flex flex-col lg:justify-evenly not-justify-evenly max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Who We Are */}
@@ -176,12 +190,12 @@ const AboutUs = () => {
               </span>
               .
             </p>
-            <a
-              href="/contact-us"
+            <Link
+              to="/contact-us#contact"
               className="bg-[#ffaa04] text-base md:text-lg text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#e69500] transition-colors duration-300"
             >
               Contact Us Today
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const ProductComponent = () => {
             title: "Cloud Compute",
             description:
                 "Deploy powerful virtual machines in seconds with scalable resources to meet your business needs.",
-            link: 'cloudcompute',
+            link: 'cloudcompute#cloud-compute',
             buttontext: 'Learn More',
         },
         {

@@ -2,13 +2,29 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const HeroSession = () => {
+const HeroSession = ({bannerHeight}) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
   // Text to be animated
   const text = "Powerful Scalable Local";
   const [displayText, setDisplayText] = useState("");
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Typing and deleting speeds
@@ -32,11 +48,11 @@ const HeroSession = () => {
         // Switch to deleting phase after typing is complete
         if (index === text.length && !isDeleting) {
           setIsDeleting(true);
-          setTimeout(() => {}, pauseBeforeDelete); // Pause before deleting
+          setTimeout(() => { }, pauseBeforeDelete); // Pause before deleting
         } else if (isDeleting && index === 0) {
           // Restart typing after deleting is complete
           setIsDeleting(false);
-          setTimeout(() => {}, pauseBeforeRestart); // Pause before restarting
+          setTimeout(() => { }, pauseBeforeRestart); // Pause before restarting
         }
       },
       isDeleting ? deletingSpeed : typingSpeed
@@ -52,7 +68,6 @@ const HeroSession = () => {
       <div className="clouds"></div>
 
 
-      
       <div className="text-center pt-32 lg:pt-0">
         {/* Main Heading */}
         <motion.h1
@@ -91,27 +106,30 @@ const HeroSession = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 2 * 0.2 }}
-            href="#"
+            href="https://portal.1cloudng.com/login"
+            target="blank"
+            rel="noreferrer"
             className="bg-[#ffaa04] text-sm md:text-base relative z-10 text-white font-semibold py-3 px-5 md:px-6 rounded-lg hover:bg-[#e69500] transition duration-300 text-center"
           >
             Start Free Trial
           </motion.a>
 
           {/* View Pricing Button */}
-          <motion.a
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 2 * 0.2 }}
-            href="/pricing"
-            className="text-primary text-sm md:text-base relative z-10 font-semibold py-3 px-5 md:px-6 rounded-lg border border-primary hover:text-[#3333CC] hover:border-[#3333CC] transition duration-300 text-center"
-            whileHover={{
-              boxShadow: "4px 4px 0px 0px #3333CC", // Adds a 3D shadow effect
-              transform: "translate(-4px, -4px)", // Moves the button to align with the shadow
-              transition: { duration: 0.2 },
-            }}
-          >
-            View Pricing
-          </motion.a>
+          <Link to='/pricing#prices'>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 2 * 0.2 }}
+              className="text-primary text-sm md:text-base relative z-10 font-semibold py-3 px-5 md:px-6 rounded-lg border border-primary hover:text-[#3333CC] hover:border-[#3333CC] transition duration-300 text-center"
+              whileHover={{
+                boxShadow: "4px 4px 0px 0px #3333CC", // Adds a 3D shadow effect
+                transform: "translate(-4px, -4px)", // Moves the button to align with the shadow
+                transition: { duration: 0.2 },
+              }}
+            >
+              View Pricing
+            </motion.button>
+          </Link>
         </div>
       </div>
     </div>

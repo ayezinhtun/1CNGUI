@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ bannerHeight }) => {
+const Navbar = forwardRef(({ bannerHeight }, ref) => {
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for resources dropdown toggle
@@ -93,23 +93,23 @@ const Navbar = ({ bannerHeight }) => {
           {/* Middle links (hidden on mobile) */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4 lg:ml-6">
             {/* Navigation links */}
-            <Link to="/">
+            <Link to="/#home">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Home
               </div>
             </Link>
 
-            <Link to="/products">
+            <Link to="/products#products">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Products
               </div>
             </Link>
-            <Link to="/solutions">
+            <Link to="/solutions#solutions">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Solutions
               </div>
             </Link>
-            <Link to="/pricing">
+            <Link to="/pricing#pricing">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Pricing
               </div>
@@ -150,7 +150,7 @@ const Navbar = ({ bannerHeight }) => {
                     Best Practise
                   </Link>
                   <Link
-                    to="/faq"
+                    to="/faq#faq"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
@@ -178,21 +178,20 @@ const Navbar = ({ bannerHeight }) => {
                     Cloud Service Agreement
                   </a>
 
-                  
-
+                
                   
                 </div>
               )}
             </div>
 
 
-            <Link to="/about-us">
+            <Link to="/about-us#about">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 About Us
               </div>
             </Link>
 
-            <Link to="/contact-us">
+            <Link to="/contact-us#contact">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Contact Sales
               </div>
@@ -363,6 +362,6 @@ const Navbar = ({ bannerHeight }) => {
       </div>
     </nav>
   );
-};
+});
 
 export default Navbar;

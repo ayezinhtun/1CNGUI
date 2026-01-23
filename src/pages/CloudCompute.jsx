@@ -1,7 +1,19 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
-export default function CloudCompute() {
+export default function CloudCompute({bannerHeight}) {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
   const [isPayAsYouGoOpen, setIsPayAsYouGoOpen] = useState(false);
   const [isReservedInstancesOpen, setIsReservedInstancesOpen] = useState(false);
 
@@ -31,11 +43,11 @@ export default function CloudCompute() {
         // Switch to deleting phase after typing is complete
         if (index === text.length && !isDeleting) {
           setIsDeleting(true);
-          setTimeout(() => {}, pauseBeforeDelete); // Pause before deleting
+          setTimeout(() => { }, pauseBeforeDelete); // Pause before deleting
         } else if (isDeleting && index === 0) {
           // Restart typing after deleting is complete
           setIsDeleting(false);
-          setTimeout(() => {}, pauseBeforeRestart); // Pause before restarting
+          setTimeout(() => { }, pauseBeforeRestart); // Pause before restarting
         }
       },
       isDeleting ? deletingSpeed : typingSpeed
@@ -46,7 +58,7 @@ export default function CloudCompute() {
   }, [index, isDeleting, text]);
 
   return (
-    <div className="min-h-screen">
+    <div id="cloud-compute" className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -123,19 +135,17 @@ export default function CloudCompute() {
               >
                 <span>Pay as you go</span>
                 <span
-                  className={`transform transition-transform duration-300 ${
-                    isPayAsYouGoOpen ? "rotate-45" : "rotate-0"
-                  }`}
+                  className={`transform transition-transform duration-300 ${isPayAsYouGoOpen ? "rotate-45" : "rotate-0"
+                    }`}
                 >
                   +
                 </span>
               </button>
               <div
-                className={`transition-all bg-secondary duration-300 ease-in-out overflow-hidden ${
-                  isPayAsYouGoOpen
+                className={`transition-all bg-secondary duration-300 ease-in-out overflow-hidden ${isPayAsYouGoOpen
                     ? "max-h-96 opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <div className="p-4 text-white max-w-lg">
                   <p>
@@ -163,19 +173,17 @@ export default function CloudCompute() {
               >
                 <span>Reserved Instances</span>
                 <span
-                  className={`transform transition-transform duration-300 ${
-                    isReservedInstancesOpen ? "rotate-45" : "rotate-0"
-                  }`}
+                  className={`transform transition-transform duration-300 ${isReservedInstancesOpen ? "rotate-45" : "rotate-0"
+                    }`}
                 >
                   +
                 </span>
               </button>
               <div
-                className={`transition-all bg-secondary duration-300 ease-in-out overflow-hidden ${
-                  isReservedInstancesOpen
+                className={`transition-all bg-secondary duration-300 ease-in-out overflow-hidden ${isReservedInstancesOpen
                     ? "max-h-96 opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <div className="p-4 text-white max-w-lg">
                   <p>
