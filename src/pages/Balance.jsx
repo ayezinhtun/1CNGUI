@@ -108,7 +108,7 @@ export default function Balance({ bannerHeight }) {
 
         {/* Header text */}
         <p className="text-white text-sm sm:text-lg max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 relative z-10">
-          <a href="#" className="text-2xl font-bold">
+          <a href="https://portal.1cloudng.com/login" target="_blank" className="text-2xl font-bold">
             Deploy
           </a>{" "}
           high-performance cloud instances with ultra-fast NVMe SSD storage and
@@ -174,7 +174,7 @@ export default function Balance({ bannerHeight }) {
                         <td className="p-3 font-semibold">{plan.priceHr}</td>
                         <td className="p-3 font-semibold">{plan.priceMo}</td>
                         <td className="p-3">
-                          <Link target="blank" to='https://portal.1cloudng.com/login?redirectUrl=/'>
+                          <Link target="blank" to='https://portal.1cloudng.com/login'>
                             <button className="p-2 rounded-full bg-secondary text-sm text-white hover:bg-blue-700 ">
                               <FaArrowRight />
                             </button>
@@ -211,9 +211,11 @@ export default function Balance({ bannerHeight }) {
                         <td className="p-3 font-semibold">{plan.ram}</td>
                         <td className="p-3 font-semibold">{plan.priceYr}</td>
                         <td className="p-3">
-                          <button className="p-2 rounded-full bg-secondary text-sm text-white hover:bg-blue-700 ">
-                            <FaArrowRight />
-                          </button>
+                          <Link target="blank" to='https://portal.1cloudng.com/login'>
+                            <button className="p-2 rounded-full bg-secondary text-sm text-white hover:bg-blue-700 ">
+                              <FaArrowRight />
+                            </button>
+                          </Link>
                         </td>
                       </tr>
                     ))}
