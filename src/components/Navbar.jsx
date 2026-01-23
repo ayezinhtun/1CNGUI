@@ -208,6 +208,7 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
             >
               Sign In
             </a>
+
             <a
               target="_blank"
               href="https://portal.1cloudng.com/register"
