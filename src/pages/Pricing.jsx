@@ -1,21 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import ExtraCPUOptimized from "./ExtraCPUOptimized";
+import CPUOptimized from "./CPUOptimized";
+import Balance from "./Balance";
+import MemoryDense from "./MemoryDense";
+import MemoryDensePlus from "./MemoryDensePlus";
+import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react";
+import { a, div } from "framer-motion/client";
 
-const Pricing = ({ bannerHeight }) => {
-  const { hash } = useLocation();
+const Pricing = () => {
+
+  const pricings = [
+    { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7 text-secondary" />, },
+    { id: "section2", title: "CPU Optimized", description: "Start at 40 MMK/hour", icon: <Cpu className="w-7 h-7 text-secondary" />, },
+    { id: "section3", title: "Balance", description: "Start at 72 MMK/ hour", icon: <PieChart className="w-7 h-7 text-secondary" />, },
+    { id: "section4", title: "Memory Dense", description: "Start at 104 MMK/hour", icon: <Server className="w-7 h-7 text-secondary" />, },
+    { id: "section5", title: "Memory Dense Plus", description: "Start at 136 MMK/hour", icon: <Database className="w-7 h-7 text-secondary" />, },
+  ]
+  const [activeId, setActiveId] = useState(pricings[0].id);
+
   useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = hash === "#prices" ? 0 : bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id); // update activeId
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" } // triggers when the section is roughly in the middle
+    );
 
+    pricings.forEach((p) => {
+      const section = document.getElementById(p.id);
+      if (section) observer.observe(section);
+    });
 
+    return () => observer.disconnect();
+  }, []);
 
   // Pricing plans data
   const plans = [
@@ -107,8 +130,10 @@ const Pricing = ({ bannerHeight }) => {
     },
   ];
 
+
+
   return (
-    <div id="pricing" className="min-h-screen scroll-mt-24">
+    <div className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -140,9 +165,9 @@ const Pricing = ({ bannerHeight }) => {
         </a>
       </div>
 
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 scroll-mt-24">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div id="prices" className="flex flex-col items-center scroll-mt-24">
+        <div className="flex flex-col items-center mb-12">
           <motion.h2
             className="text-3xl font-semibold text-primary text-center mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -163,62 +188,53 @@ const Pricing = ({ bannerHeight }) => {
           </Link>
         </div>
         {/* Pricing Grid */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.7 }}
-            >
-              <div
-                className={`bg-white/80 h-full flex flex-col backdrop-blur-md rounded-2xl border border-white/20 p-8 text-black hover:text-white text-center transition-all duration-300 hover:bg-blue-500/80 relative`}
-              >
-                {/* Most Popular Label - Only for Balance plan */}
-                {plan.mostPopular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white text-md px-6 py-1 rounded-full">
-                    Most Popular
-                  </div>
-                )}
+        <section className="flex gap-4">
+          <div className="w-1/4">
+            <nav className="sticky h-[85vh] top-24 overflow-y-auto">
+              <ul className="space-y-3">
+                {pricings.map((p) => {
+                  const isActive = activeId === p.id;
 
-                {/* Plan Header */}
-                <h2 className="text-xl font-bold mb-6">{plan.name}</h2>
-
-                {/* Plan Price */}
-                <p className="text-3xl font-bold mb-6">{plan.price}</p>
-
-                {/* Features List */}
-                <ul className="mb-6 space-y-5 flex-grow">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="mb-2 flex items-start">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#ffaa04"
-                        className="h-5 w-5 inline-block mr-2 shrink-0"
-                        viewBox="0 0 20 20"
+                  return (
+                    <a href={`#${p.id}`} className="flex flex-col">
+                      <li
+                        key={p.id}
+                        className={`flex items-center gap-2 px-2 transition-all duration-200 ${isActive
+                          ? "shadow-md shadow-blue-300 border-none bg-white"
+                          : "border border-gray-300 bg-white/80"
+                          }`}
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-left">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                {/* Plan CTA */}
+                        <div className="">
+                          <span>{p.icon}</span>
+                        </div>
+                        <a className="block px-3 py-4">
+                          <h1 className="font-semibold pb-1">{p.title}</h1>
+                          <p className="text-gray-500 text-sm">{p.description}</p>
+                        </a>
+                      </li>
+                    </a>
+                  )
+                }
+                )}
+              </ul>
+            </nav>
 
-                {/* Button */}
-                <Link to={plan.link}>
-                  <button className="bg-white text-blue-500 px-6 py-2 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all duration-300">
-                    View All Plans & Pricing
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
+          </div>
+
+          <div className="w-3/4">
+            <section id="section1" className="scroll-mt-16">
+              <ExtraCPUOptimized />
+            </section>
+            <section id="section2" className="scroll-mt-16">
+              <CPUOptimized />
+            </section>
+            <section id="section3" className="scroll-mt-16"><Balance /></section>
+            <section id="section4" className="scroll-mt-16"><MemoryDense /></section>
+            <section id="section5" className="scroll-mt-16"><MemoryDensePlus /></section>
+          </div>
+        </section>
+
       </div>
     </div>
   );
