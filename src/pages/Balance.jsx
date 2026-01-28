@@ -79,50 +79,17 @@ const reservedinstances = [
   { balance: "BL24", vcpu: "24", ram: "96", priceYr: "12,684,480" },
 ];
 
-export default function Balance({ bannerHeight }) {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+export default function Balance() {
+
   return (
     <div className="min-h-screen" id="balance">
-      {/* Page Header */}
-      <div
-        className="relative h-64 text-center flex items-center py-10 md:py-14"
-        style={{
-          backgroundColor: "#283E80", // Custom background color
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Ccircle cx='100' cy='100' r='80' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='300' cy='200' r='120' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='500' cy='50' r='60' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='700' cy='300' r='100' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='200' cy='350' r='90' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='600' cy='150' r='70' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E")`,
-          backgroundSize: "cover", // Cover the entire banner
-          backgroundPosition: "center", // Center the pattern
-          backgroundRepeat: "no-repeat", // Prevent repetition
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-
-        {/* Header text */}
-        <p className="text-white text-sm sm:text-lg max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 relative z-10">
-          <a href="https://portal.1cloudng.com/login" target="_blank" className="text-2xl font-bold">
-            Deploy
-          </a>{" "}
-          high-performance cloud instances with ultra-fast NVMe SSD storage and
-          flexible, pay-as-you-go pricing. Experience blazing-fast speeds, low
-          latency, cost-effective and reliable Cloud Solutions with 99.95% Uptime
-          Guarantee, —powered by One Cloud Next-Gen.
-        </p>
-      </div>
-
       {/* Main content */}
       <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div>
           {/* Introductory text */}
           <div>
+            <h1 className="text-secondary font-extrabold text-3xl pb-6">Balance</h1>
+
             <p className="text-secondary">
               Experience ultra-fast NVMe SSD storage with the flexibility to
               choose the exact size you need. Scale effortlessly and enjoy high
@@ -147,11 +114,16 @@ export default function Balance({ bannerHeight }) {
           </p>
 
           {/* CapsuleTabs for switching between "Pay as you go" and "Reserved Instances" */}
-          <CapsuleTabs>
+          <>
             {/* Pay as you go tab */}
             <div label="Pay as you go">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
+                    Pay as you go
+                  </p>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Balance</th>
@@ -189,8 +161,13 @@ export default function Balance({ bannerHeight }) {
 
             {/* Reserved Instances tab */}
             <div label="Reserved Instances">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
+                    Reserved Instances
+                  </p>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Balance</th>
@@ -223,7 +200,7 @@ export default function Balance({ bannerHeight }) {
                 </table>
               </div>
             </div>
-          </CapsuleTabs>
+          </>
         </div>
       </div>
     </div>

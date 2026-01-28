@@ -9,8 +9,8 @@ const Tab = ({ label, active, onClick }) => {
   return (
     <button
       className={`px-4 py-2 rounded-full text-sm md:text-base transition-colors ${active
-          ? "bg-gray-200 text-black font-semibold shadow-md hover:bg-secondary hover:text-white"
-          : "text-gray-700 hover:bg-secondary hover:text-white"
+        ? "bg-gray-200 text-black font-semibold shadow-md hover:bg-secondary hover:text-white"
+        : "text-gray-700 hover:bg-secondary hover:text-white"
         }`}
       onClick={onClick}
     >
@@ -80,23 +80,12 @@ const reservedinstances = [
 ];
 
 // Main component for the CPU-Optimized page
-export default function CPUOptimized({ bannerHeight }) {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+export default function CPUOptimized() {
 
   return (
-    <div id="cpu" className="min-h-screen">
+    <div className="min-h-screen">
       {/* Page Header */}
-      <div
+      {/* <div
         className="relative h-64 text-center flex items-center py-10 md:py-14"
         style={{
           backgroundColor: "#283E80", // Custom background color
@@ -117,12 +106,14 @@ export default function CPUOptimized({ bannerHeight }) {
           latency, cost-effective and reliable Cloud Solutions with 99.95% Uptime
           Guarantee, —powered by One Cloud Next-Gen.
         </p>
-      </div>
+      </div> */}
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div>
           <div>
+            <h1 className="text-secondary font-extrabold text-3xl pb-6">CPU Optimized</h1>
+
             <p className="text-secondary">
               Experience ultra-fast NVMe SSD storage with the flexibility to
               choose the exact size you need. Scale effortlessly and enjoy high
@@ -145,10 +136,15 @@ export default function CPUOptimized({ bannerHeight }) {
           </p>
 
           {/* CapsuleTabs for switching between pricing models */}
-          <CapsuleTabs>
+          <>
             <div label="Pay as you go">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
+                    Pay as you go
+                  </p>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">CPU Optimized</th>
@@ -186,8 +182,13 @@ export default function CPUOptimized({ bannerHeight }) {
               </div>
             </div>
             <div label="Reserved Instances">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
+                    Reserved Instances
+                  </p>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">CPU Optimized</th>
@@ -222,7 +223,7 @@ export default function CPUOptimized({ bannerHeight }) {
                 </table>
               </div>
             </div>
-          </CapsuleTabs>
+          </>
         </div>
       </div>
     </div>
