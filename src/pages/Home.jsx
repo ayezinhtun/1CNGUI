@@ -7,6 +7,7 @@ import ProductComponent from '../components/ProductComponent';
 import { useLocation } from 'react-router-dom';
 
 const Home = ({bannerHeight}) => {
+
     const { hash } = useLocation();
     useEffect(() => {
         if (hash) {

@@ -7,9 +7,29 @@ import Balance from "./Balance";
 import MemoryDense from "./MemoryDense";
 import MemoryDensePlus from "./MemoryDensePlus";
 import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react";
-import { a, div } from "framer-motion/client";
 
-const Pricing = () => {
+const Pricing = ({ bannerHeight }) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash && hash.startsWith("#pricing")) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
+
+  useEffect(() => {
+    if (hash === "#prices") {
+      const element = document.getElementById("prices");
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset - bannerHeight;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
 
   const pricings = [
     { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7 text-secondary" />, },
@@ -40,100 +60,9 @@ const Pricing = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Pricing plans data
-  const plans = [
-    {
-      name: "Extra CPU Optimized",
-      description:
-        "Perfect for balanced workloads with equal CPU and memory needs.",
-      price: "Start at 24 MMK/hour",
-      features: [
-        "Designed for burstable and ultra-intensive workloads",
-        "Perfect for real-time analytics, high-frequency trading, and simulations",
-        "Higher core count for parallel processing",
-        "Best for enterprise-level and mission-critical applications",
-      ],
-      link: "/extra-cpu-optimized#extra-cpu",
-      textColor: "text-[#AE76B5]",
-      borderColor: "border-[#7030A0]",
-      color: "bg-gradient-to-b from-[#AE76B5] to-indigo-800",
-      btnHoverColor: "hover:text-[#7030A0]",
-    },
-    {
-      name: "CPU Optimized",
-      description: "Optimized for CPU-intensive workloads.",
-      price: "Start at 40 MMK/hour",
-      features: [
-        "Balanced high-performance CPUs for efficient computing",
-        "Optimized for sustained workloads with consistent performance",
-        "Ideal for AI, machine learning, and data processing",
-        "Lower latency for compute-heavy applications",
-        "Scalable for growing business needs",
-      ],
-      link: "/cpu-optimized#cpu",
-      textColor: "text-[#73BFA3]",
-      borderColor: "border-[#00B050]",
-      color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
-      btnHoverColor: "hover:text-cyan-700",
-    },
-    {
-      name: "Balance",
-      description: "Enhanced CPU performance for demanding applications.",
-      price: "Start at 72 MMK/ hour",
-      features: [
-        "Well-balanced CPU & RAM ratio for versatile workloads",
-        "Optimized for general-purpose applications",
-        "Stable performance for web hosting, databases, and business apps",
-        "Cost-effective solution for medium workloads",
-        "Scalable resources to adapt to business growth",
-      ],
-      link: "/balance#balance",
-      textColor: "text-[#73BFA3]",
-      borderColor: "border-[#00B050]",
-      color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
-      btnHoverColor: "hover:text-cyan-700",
-      mostPopular: true, // Added this flag for the Balance plan
-    },
-    {
-      name: "Memory Dense",
-      description: "Maximum CPU power for high-performance computing.",
-      price: "Start at 104 MMK/hour",
-      features: [
-        "High RAM capacity for memory-intensive applications",
-        "Optimized for databases, in-memory caching, and big data analytics",
-        "Faster processing for large datasets and complex queries",
-        "Ensures smooth performance for enterprise applications",
-        "Scalable for growing memory demands",
-      ],
-      link: "/memory-dense#memory",
-      textColor: "text-[#73BFA3]",
-      borderColor: "border-[#00B050]",
-      color: "bg-gradient-to-b from-[#73BFA3] to-cyan-700",
-      btnHoverColor: "hover:text-cyan-700",
-    },
-    {
-      name: "Memory Dense Plus",
-      description: "Ideal for memory-intensive applications.",
-      price: "Start at 136 MMK/hour",
-      features: [
-        "Maximum RAM allocation for extreme memory-intensive tasks",
-        "Designed for large-scale analytics, real-time processing, and AI workloads",
-        "Handles massive datasets with minimal latency",
-        "Best for high-demand enterprise applications and mission-critical systems",
-        "Optimized for ultra-high memory efficiency and performance",
-      ],
-      link: "/memory-dense-plus#memory-dense-plus",
-      textColor: "text-[#EC9C43]",
-      borderColor: "border-[#F79646]",
-      color: "bg-gradient-to-b from-[#EC9C43] to-orange-600",
-      btnHoverColor: "hover:text-orange-600",
-    },
-  ];
-
-
 
   return (
-    <div className="min-h-screen">
+    <div id="pricing" className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -165,7 +94,7 @@ const Pricing = () => {
         </a>
       </div>
 
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+      <div id="prices" className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col items-center mb-12">
           <motion.h2
@@ -191,7 +120,7 @@ const Pricing = () => {
         <section className="flex gap-4">
           <div className="w-1/4">
             <nav className="sticky h-[85vh] top-24 overflow-y-auto">
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {pricings.map((p) => {
                   const isActive = activeId === p.id;
 
@@ -199,16 +128,16 @@ const Pricing = () => {
                     <a href={`#${p.id}`} className="flex flex-col">
                       <li
                         key={p.id}
-                        className={`flex items-center gap-2 px-2 transition-all duration-200 ${isActive
-                          ? "shadow-md shadow-blue-300 border-none bg-white"
+                        className={`flex rounded-md items-center gap-2 px-2 transition-all duration-200 ${isActive
+                          ? "border-none bg-white/90 shadow-[0_0_16px_rgba(29,78,216,0.25)]"
                           : "border border-gray-300 bg-white/80"
                           }`}
                       >
                         <div className="">
                           <span>{p.icon}</span>
                         </div>
-                        <a className="block px-3 py-4">
-                          <h1 className="font-semibold pb-1">{p.title}</h1>
+                        <a className="block px-3 py-5">
+                          <h1 className="font-semibold pb-2">{p.title}</h1>
                           <p className="text-gray-500 text-sm">{p.description}</p>
                         </a>
                       </li>

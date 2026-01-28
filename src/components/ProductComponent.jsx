@@ -58,7 +58,7 @@ const ProductComponent = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="shadow-md transition-shadow duration-300 hover:shadow-2xl hover:shadow-blue-700"
+                            className="shadow-md transition-shadow duration-300 rounded-2xl hover:shadow-xl hover:shadow-blue-300"
                         >
                             <div
                                 key={index}
