@@ -22,11 +22,11 @@ const Pricing = ({ bannerHeight }) => {
   }, [hash, bannerHeight]);
 
   const pricings = [
-    { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7 text-secondary" />, },
-    { id: "section2", title: "CPU Optimized", description: "Start at 40 MMK/hour", icon: <Cpu className="w-7 h-7 text-secondary" />, },
-    { id: "section3", title: "Balance", description: "Start at 72 MMK/ hour", icon: <PieChart className="w-7 h-7 text-secondary" />, },
-    { id: "section4", title: "Memory Dense", description: "Start at 104 MMK/hour", icon: <Server className="w-7 h-7 text-secondary" />, },
-    { id: "section5", title: "Memory Dense Plus", description: "Start at 136 MMK/hour", icon: <Database className="w-7 h-7 text-secondary" />, },
+    { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7" />, },
+    { id: "section2", title: "CPU Optimized", description: "Start at 40 MMK/hour", icon: <Cpu className="w-7 h-7" />, },
+    { id: "section3", title: "Balance", description: "Start at 72 MMK/ hour", icon: <PieChart className="w-7 h-7" />, },
+    { id: "section4", title: "Memory Dense", description: "Start at 104 MMK/hour", icon: <Server className="w-7 h-7" />, },
+    { id: "section5", title: "Memory Dense Plus", description: "Start at 136 MMK/hour", icon: <Database className="w-7 h-7" />, },
   ]
   const [activeId, setActiveId] = useState(pricings[0].id);
 
@@ -127,7 +127,7 @@ const Pricing = ({ bannerHeight }) => {
                           : "border border-gray-300 bg-white/80"
                           }`}
                       >
-                        <div className="">
+                        <div className={`p-2 rounded-lg ${isActive ? "bg-secondary text-white" : "border border-secondary text-secondary"}`}>
                           <span>{p.icon}</span>
                         </div>
                         <a className="block px-3 py-5">
