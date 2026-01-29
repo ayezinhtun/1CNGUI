@@ -105,7 +105,7 @@ const Pricing = ({ bannerHeight }) => {
             of cloud services tailored to your business needs.
           </p>
           <Link
-            to="/contact-us#contact"
+            to="/contact-us"
             className="mt-4 bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-[#e69900]"
           >
             Contact Sales
