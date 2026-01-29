@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IoIosPricetags } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Gauge, ShieldCheck, Wallet } from "lucide-react";
 
 // Tab component for rendering individual tabs
 const Tab = ({ label, active, onClick }) => {
@@ -139,9 +140,16 @@ export default function ExtraCPUOptimized() {
             <div label="Pay as you go">
               <div className="overflow-x-auto mt-12">
                 <div className="flex">
-                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
-                    Pay as you go
-                  </p>
+                  <div className="flex gap-2 mb-4">
+                    <Wallet className="text-secondary" />
+                    <p className="
+                      font-bold text-xl
+                      bg-gradient-to-r from-secondary to-accent
+                      bg-clip-text text-transparent
+                    ">
+                      Pay as you go
+                    </p>
+                  </div>
                 </div>
 
                 <table className="min-w-full text-center">
@@ -186,9 +194,17 @@ export default function ExtraCPUOptimized() {
             <div label="Reserved Instances">
               <div className="overflow-x-auto mt-12">
                 <div className="flex">
-                  <p className="bg-gray-200 text-secondary font-semibold shadow-md px-4 py-2 rounded-full text-sm md:text-base transition-colors mb-4">
-                    Reserved Instances
-                  </p>
+                  <div className="flex gap-2 mb-4">
+                    <ShieldCheck className="text-secondary" />
+                    <p className="
+                      font-bold text-xl
+                      bg-gradient-to-r from-secondary to-accent
+                      bg-clip-text text-transparent
+                    ">
+                      Reserved Instances
+                    </p>
+                  </div>
+
                 </div>
                 <table className="min-w-full text-center">
                   <thead>

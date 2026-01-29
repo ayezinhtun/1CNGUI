@@ -625,12 +625,12 @@ const Solutions = ({bannerHeight}) => {
           </div>
           {/* Button  */}
           <div className="mt-5">
-            <Link to="/contact-us">
+            <Link to="/contact-us#contact">
               <button className="bg-accent text-xs sm:text-base text-white px-2 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-full hover:bg-white hover:text-accent transition-all duration-300">
                 Talk to a Cloud Specialist
               </button>
             </Link>
-            <Link to="/pricing#pricing" className="ml-4">
+            <Link to="/pricing#prices" className="ml-4">
               <button className="bg-white text-xs sm:text-base text-accent px-2 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-full font-bold hover:bg-accent hover:text-white transition-all duration-300">
                 Explore Pricing
               </button>

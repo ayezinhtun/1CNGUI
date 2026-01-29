@@ -11,13 +11,13 @@ import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react"
 const Pricing = ({ bannerHeight }) => {
   const { hash } = useLocation();
   useEffect(() => {
-    if (hash.startsWith("#pricing")) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = hash === "#prices" ? 0 : bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
+    if (hash !== "#pricing" && hash !== "#prices") return;
+
+    const element = document.querySelector(hash);
+    if (element) {
+      const yOffset = hash === "#prices" ? 0 : bannerHeight;
+      const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   }, [hash, bannerHeight]);
 
@@ -89,9 +89,9 @@ const Pricing = ({ bannerHeight }) => {
         </a>
       </div>
 
-      <div id="prices" className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col items-center mb-12">
+        <div id="prices" className="flex flex-col items-center mb-12">
           <motion.h2
             className="text-3xl font-semibold text-primary text-center mb-4"
             initial={{ opacity: 0, y: 20 }}

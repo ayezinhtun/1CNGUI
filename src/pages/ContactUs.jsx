@@ -199,7 +199,7 @@ const ContactUs = ({bannerHeight}) => {
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full">
                 <iframe
                   title="Cloud Services Location"
-                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61109.386459155736!2d96.0899932423585!3d16.80964689980473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20AI%20Avenue%2C%20Innovation%20District%2C%20Yangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1766566523944!5m2!1sen!2smm"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61117.42815490598!2d96.05461152167967!3d16.78467090000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb09e45dc9c1%3A0xb4d32694065909b3!2sShwe%20Zabu%20River%20View%20Condo!5e0!3m2!1sen!2smm!4v1769655234446!5m2!1sen!2smm"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: '300px' }}
