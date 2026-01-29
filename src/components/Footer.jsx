@@ -80,13 +80,13 @@ const Footer = () => {
         <div className='text-center md:text-left'>
           <h3 className="text-xl font-bold mb-4">Follow Us</h3>
           <div className="flex justify-center md:justify-start items-center space-x-4">
-            <a href="https://www.facebook.com/1cloudng" className="text-white hover:text-white transition-colors">
+            <a href="https://www.facebook.com/1cloudng" target='_blank' rel="noopener noreferrer" className="text-white hover:text-white transition-colors">
               <i className="fab fa-facebook fa-lg"></i>
             </a>
-            <a href="https://www.linkedin.com/company/1cloudng" className="text-white hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/company/1cloudng" target='_blank' rel="noopener noreferrer" className="text-white hover:text-white transition-colors">
               <i className="fab fa-linkedin fa-lg"></i>
             </a>
-            <a href="https://www.youtube.com/@1cloudng" className="text-white hover:text-white transition-colors">
+            <a href="https://www.youtube.com/@1cloudng" target='_blank'  rel="noopener noreferrer" className="text-white hover:text-white transition-colors">
               <i className="fab fa-youtube fa-lg"></i>
             </a>
           </div>

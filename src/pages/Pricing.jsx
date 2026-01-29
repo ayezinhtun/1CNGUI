@@ -11,21 +11,11 @@ import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react"
 const Pricing = ({ bannerHeight }) => {
   const { hash } = useLocation();
   useEffect(() => {
-    if (hash && hash.startsWith("#pricing")) {
+    if (hash.startsWith("#pricing")) {
       const element = document.querySelector(hash);
       if (element) {
-        const yOffset = bannerHeight;
+        const yOffset = hash === "#prices" ? 0 : bannerHeight;
         const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
-
-  useEffect(() => {
-    if (hash === "#prices") {
-      const element = document.getElementById("prices");
-      if (element) {
-        const y = element.getBoundingClientRect().top + window.pageYOffset - bannerHeight;
         window.scrollTo({ top: y, behavior: "smooth" });
       }
     }
@@ -59,6 +49,11 @@ const Pricing = ({ bannerHeight }) => {
 
     return () => observer.disconnect();
   }, []);
+
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: {} }
+  }
 
 
   return (
@@ -123,13 +118,12 @@ const Pricing = ({ bannerHeight }) => {
               <ul className="space-y-2">
                 {pricings.map((p) => {
                   const isActive = activeId === p.id;
-
                   return (
                     <a href={`#${p.id}`} className="flex flex-col">
                       <li
                         key={p.id}
                         className={`flex rounded-md items-center gap-2 px-2 transition-all duration-200 ${isActive
-                          ? "border-none bg-white/90 shadow-[0_0_16px_rgba(29,78,216,0.25)]"
+                          ? "border-none bg-white/90 shadow-md shadow-blue-400"
                           : "border border-gray-300 bg-white/80"
                           }`}
                       >
