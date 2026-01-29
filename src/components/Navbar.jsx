@@ -85,7 +85,7 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo on the left */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-xl font-bold ">
+            <Link to="/#home" className="text-xl font-bold ">
               <img src={logo} className="w-40" alt="OneCloud Logo" />
             </Link>
           </div>
