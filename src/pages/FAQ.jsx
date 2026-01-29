@@ -536,19 +536,7 @@ const categories = [
   "Does 1CNG support user self-managed portal?",
 ];
 
-const FAQ = ({bannerHeight}) => {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
-
+const FAQ = () => {
   const [selectedCategory, setSelectedCategory] = useState("Filter");
   const [currentPage, setCurrentPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
@@ -582,7 +570,7 @@ const FAQ = ({bannerHeight}) => {
   return (
     <>
       {/* Main Container */}
-      <div id="faq" className="min-h-screen">
+      <div className="min-h-screen">
         <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <>
             {/* Header Section */}

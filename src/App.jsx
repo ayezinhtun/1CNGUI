@@ -14,10 +14,12 @@ import Balance from './pages/Balance';
 import MemoryDense from './pages/MemoryDense';
 import MemoryDensePlus from './pages/MemoryDensePlus';
 import { useRef } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop/>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

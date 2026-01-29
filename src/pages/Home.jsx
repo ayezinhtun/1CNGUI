@@ -6,21 +6,11 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import ProductComponent from '../components/ProductComponent';
 import { useLocation } from 'react-router-dom';
 
-const Home = ({bannerHeight}) => {
+const Home = () => {
 
-    const { hash } = useLocation();
-    useEffect(() => {
-        if (hash) {
-            const element = document.querySelector(hash);
-            if (element) {
-                const yOffset = bannerHeight;
-                const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-                window.scrollTo({ top: y, behavior: "smooth" });
-            }
-        }
-    }, [hash, bannerHeight]);
+    
     return (
-        <div id='home'>
+        <div>
             <HeroSection />
             <ProductComponent />
             <ServiceReliability />

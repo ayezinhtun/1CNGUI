@@ -57,7 +57,7 @@ const Pricing = ({ bannerHeight }) => {
 
 
   return (
-    <div id="pricing" className="min-h-screen">
+    <div className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"

@@ -2,18 +2,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-export default function CloudCompute({bannerHeight}) {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+export default function CloudCompute() {
+ 
   const [isPayAsYouGoOpen, setIsPayAsYouGoOpen] = useState(false);
   const [isReservedInstancesOpen, setIsReservedInstancesOpen] = useState(false);
 
@@ -58,7 +48,7 @@ export default function CloudCompute({bannerHeight}) {
   }, [index, isDeleting, text]);
 
   return (
-    <div id="cloud-compute" className="min-h-screen">
+    <div className="min-h-screen">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"

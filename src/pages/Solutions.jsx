@@ -548,19 +548,7 @@ const categories = [
   },
 ];
 
-const Solutions = ({bannerHeight}) => {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
-
+const Solutions = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(true);
   const [showMobileFilter, setShowMobileFilter] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -625,7 +613,7 @@ const Solutions = ({bannerHeight}) => {
           </div>
           {/* Button  */}
           <div className="mt-5">
-            <Link to="/contact-us#contact">
+            <Link to="/contact-us">
               <button className="bg-accent text-xs sm:text-base text-white px-2 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded-full hover:bg-white hover:text-accent transition-all duration-300">
                 Talk to a Cloud Specialist
               </button>

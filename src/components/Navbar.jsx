@@ -85,7 +85,7 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo on the left */}
           <div className="flex-shrink-0">
-            <Link to="/#home" className="text-xl font-bold ">
+            <Link to="/" className="text-xl font-bold ">
               <img src={logo} className="w-40" alt="OneCloud Logo" />
             </Link>
           </div>
@@ -93,23 +93,23 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
           {/* Middle links (hidden on mobile) */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4 lg:ml-6">
             {/* Navigation links */}
-            <Link to="/#home">
+            <Link to="/">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Home
               </div>
             </Link>
 
-            <Link to="/products#products">
+            <Link to="/products">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Products
               </div>
             </Link>
-            <Link to="/solutions#solutions">
+            <Link to="/solutions">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Solutions
               </div>
             </Link>
-            <Link to="/pricing#pricing">
+            <Link to="/pricing">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Pricing
               </div>
@@ -151,7 +151,7 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
                     Best Practise
                   </Link>
                   <Link
-                    to="/faq#faq"
+                    to="/faq"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
@@ -186,13 +186,13 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
             </div>
 
 
-            <Link to="/about-us#about">
+            <Link to="/about-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 About Us
               </div>
             </Link>
 
-            <Link to="/contact-us#contact">
+            <Link to="/contact-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Contact Sales
               </div>

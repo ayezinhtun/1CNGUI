@@ -2,18 +2,8 @@ import React, { useEffect } from 'react';
 import { motion } from "framer-motion";
 import { useLocation } from 'react-router-dom';
 
-const ContactUs = ({bannerHeight}) => {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+const ContactUs = () => {
+  
   return (
     <div id='contact' className="min-h-screen">
       {/* Page Header */}

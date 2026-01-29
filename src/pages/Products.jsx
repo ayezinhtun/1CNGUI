@@ -57,21 +57,10 @@ const products = [
   },
 ];
 
-export default function Products({bannerHeight}) {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
-
+export default function Products() {
+  
   return (
-    <div id="products" className="min-h-screen">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
@@ -110,7 +99,7 @@ export default function Products({bannerHeight}) {
             >
               {/* Conditional rendering for "Cloud Compute" */}
               {product.title === "Cloud Compute" ? (
-                <Link to="/cloudcompute#cloud-compute">
+                <Link to="/cloudcompute">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105">
                     <div className="p-6">
                       {product.icon}
