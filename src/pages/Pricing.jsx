@@ -8,7 +8,19 @@ import MemoryDense from "./MemoryDense";
 import MemoryDensePlus from "./MemoryDensePlus";
 import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react";
 
-const Pricing = () => {
+const Pricing = ({ bannerHeight }) => {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash !== "#pricing" && hash !== "#prices") return;
+
+    const element = document.querySelector(hash);
+    if (element) {
+      const yOffset = hash === "#prices" ? 0 : bannerHeight;
+      const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [hash, bannerHeight]);
+
   const pricings = [
     { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7" />, },
     { id: "section2", title: "CPU Optimized", description: "Start at 40 MMK/hour", icon: <Cpu className="w-7 h-7" />, },
@@ -110,9 +122,9 @@ const Pricing = () => {
                     <a href={`#${p.id}`} className="flex flex-col">
                       <li
                         key={p.id}
-                        className={`flex items-center gap-2 px-2 transition-all duration-200 ${isActive
-                          ? "border-none"
-                          : "border"
+                        className={`flex rounded-md items-center gap-2 px-2 transition-all duration-200 ${isActive
+                          ? "border-none bg-white/90 shadow-md shadow-blue-400"
+                          : "border border-gray-300 bg-white/80"
                           }`}
                       >
                         <div className={`p-2 rounded-lg ${isActive ? "bg-secondary text-white" : "border border-secondary text-secondary"}`}>
