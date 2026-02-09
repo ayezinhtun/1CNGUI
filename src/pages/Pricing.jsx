@@ -6,7 +6,15 @@ import CPUOptimized from "./CPUOptimized";
 import Balance from "./Balance";
 import MemoryDense from "./MemoryDense";
 import MemoryDensePlus from "./MemoryDensePlus";
-import { Cpu, Database, Grid, PieChart, Scale, Server, Zap } from "lucide-react";
+import {
+  Cpu,
+  Database,
+  Grid,
+  PieChart,
+  Scale,
+  Server,
+  Zap,
+} from "lucide-react";
 
 const Pricing = ({ bannerHeight }) => {
   const { hash } = useLocation();
@@ -16,18 +24,44 @@ const Pricing = ({ bannerHeight }) => {
     const element = document.querySelector(hash);
     if (element) {
       const yOffset = hash === "#prices" ? 0 : bannerHeight;
-      const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset - yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }, [hash, bannerHeight]);
 
   const pricings = [
-    { id: "section1", title: "Extra CPU Optimized", description: "Start at 24 MMK/hour", icon: <Zap className="w-7 h-7" />, },
-    { id: "section2", title: "CPU Optimized", description: "Start at 40 MMK/hour", icon: <Cpu className="w-7 h-7" />, },
-    { id: "section3", title: "Balance", description: "Start at 72 MMK/ hour", icon: <PieChart className="w-7 h-7" />, },
-    { id: "section4", title: "Memory Dense", description: "Start at 104 MMK/hour", icon: <Server className="w-7 h-7" />, },
-    { id: "section5", title: "Memory Dense Plus", description: "Start at 136 MMK/hour", icon: <Database className="w-7 h-7" />, },
-  ]
+    {
+      id: "section1",
+      title: "Extra CPU Optimized",
+      description: "Start at 24 MMK/hour",
+      icon: <Zap className="w-7 h-7" />,
+    },
+    {
+      id: "section2",
+      title: "CPU Optimized",
+      description: "Start at 40 MMK/hour",
+      icon: <Cpu className="w-7 h-7" />,
+    },
+    {
+      id: "section3",
+      title: "Balance",
+      description: "Start at 72 MMK/ hour",
+      icon: <PieChart className="w-7 h-7" />,
+    },
+    {
+      id: "section4",
+      title: "Memory Dense",
+      description: "Start at 104 MMK/hour",
+      icon: <Server className="w-7 h-7" />,
+    },
+    {
+      id: "section5",
+      title: "Memory Dense Plus",
+      description: "Start at 136 MMK/hour",
+      icon: <Database className="w-7 h-7" />,
+    }
+  ];
   const [activeId, setActiveId] = useState(pricings[0].id);
 
   useEffect(() => {
@@ -39,7 +73,7 @@ const Pricing = ({ bannerHeight }) => {
           }
         });
       },
-      { rootMargin: "-50% 0px -50% 0px" } // triggers when the section is roughly in the middle
+      { rootMargin: "-50% 0px -50% 0px" }, // triggers when the section is roughly in the middle
     );
 
     pricings.forEach((p) => {
@@ -52,9 +86,8 @@ const Pricing = ({ bannerHeight }) => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: {} }
-  }
-
+    visible: { opacity: 1, y: 0, transition: {} },
+  };
 
   return (
     <div className="min-h-screen">
@@ -89,7 +122,7 @@ const Pricing = ({ bannerHeight }) => {
         </a>
       </div>
 
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-20">
         {/* Section Header */}
         <div id="prices" className="flex flex-col items-center mb-12">
           <motion.h2
@@ -113,8 +146,8 @@ const Pricing = ({ bannerHeight }) => {
         </div>
         {/* Pricing Grid */}
         <section className="flex gap-4">
-          <div className="w-1/4">
-            <nav className="sticky h-[85vh] top-24 overflow-y-auto">
+          <div className="w-1/6">
+            <nav className="sticky h-[85vh] top-24 overflow-y-auto scrollbar-hide scroll-smooth">
               <ul className="space-y-2">
                 {pricings.map((p) => {
                   const isActive = activeId === p.id;
@@ -122,40 +155,53 @@ const Pricing = ({ bannerHeight }) => {
                     <a href={`#${p.id}`} className="flex flex-col">
                       <li
                         key={p.id}
-                        className={`flex rounded-md items-center gap-2 px-2 transition-all duration-200 ${isActive
-                          ? "border-none bg-white/90 shadow-md shadow-blue-400"
-                          : "border border-gray-300 bg-white/80"
-                          }`}
+                        className={`flex items-center transition-all duration-200 ${
+                          isActive ? "" : ""
+                        }`}
                       >
-                        <div className={`p-2 rounded-lg ${isActive ? "bg-secondary text-white" : "border border-secondary text-secondary"}`}>
-                          <span>{p.icon}</span>
-                        </div>
-                        <a className="block px-3 py-5">
-                          <h1 className="font-semibold pb-2">{p.title}</h1>
-                          <p className="text-gray-500 text-sm">{p.description}</p>
+                        <span
+                          className={
+                            isActive ? "opacity-100 text-secondary" : "opacity-0"
+                          }
+                        >
+                          {p.icon}
+                        </span>
+
+                        <a className="block px-3 py-2">
+                          <h1
+                            className={`font-semibold pb-2 transition-colors duration-200 ${
+                              isActive ? "text-secondary" : "text-gray-800"
+                            }`}
+                          >
+                            {p.title}
+                          </h1>
                         </a>
                       </li>
                     </a>
-                  )
-                }
-                )}
+                  );
+                })}
               </ul>
             </nav>
           </div>
 
-          <div className="w-3/4">
+          <div className="w-4/5">
             <section id="section1" className="scroll-mt-16">
               <ExtraCPUOptimized />
             </section>
             <section id="section2" className="scroll-mt-16">
               <CPUOptimized />
             </section>
-            <section id="section3" className="scroll-mt-16"><Balance /></section>
-            <section id="section4" className="scroll-mt-16"><MemoryDense /></section>
-            <section id="section5" className="scroll-mt-16"><MemoryDensePlus /></section>
+            <section id="section3" className="scroll-mt-16">
+              <Balance />
+            </section>
+            <section id="section4" className="scroll-mt-16">
+              <MemoryDense />
+            </section>
+            <section id="section5" className="scroll-mt-16">
+              <MemoryDensePlus />
+            </section>
           </div>
         </section>
-
       </div>
     </div>
   );

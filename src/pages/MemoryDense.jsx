@@ -111,22 +111,10 @@ export default function MemoryDense() {
           </p>
 
           {/* CapsuleTabs for switching between pricing options */}
-          <>
+          <CapsuleTabs>
             <div label="Pay as you go">
-              <div className="overflow-x-auto mt-12">
-                <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <Wallet className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Pay as you go
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense</th>
@@ -162,20 +150,8 @@ export default function MemoryDense() {
               </div>
             </div>
             <div label="Reserved Instances">
-              <div className="overflow-x-auto mt-12">
-                 <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <ShieldCheck className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Reserved Instances
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense</th>
@@ -208,7 +184,8 @@ export default function MemoryDense() {
                 </table>
               </div>
             </div>
-          </>
+          </CapsuleTabs>
+
         </div>
       </div>
     </div>

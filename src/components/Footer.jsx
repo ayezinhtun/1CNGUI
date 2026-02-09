@@ -96,7 +96,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-600 mt-8 pt-8 text-center px-4 sm:px-6 lg:px-8">
         <p className="text-white">
-          © {new Date().getFullYear()} One Cloud Next Generation. All rights reserved. In Partnership with AYARNET.
+          © {new Date().getFullYear()} One Cloud Next Generation. All rights reserved.
         </p>
       </div>
     </footer>

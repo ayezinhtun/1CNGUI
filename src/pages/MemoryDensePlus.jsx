@@ -115,24 +115,12 @@ export default function MemoryDensePlus() {
             Memory-Dense Plus Instances offer a 1:8 CPU-to-memory ratio, providing maximum memory capacity for the most demanding workloads. With high-performance CPUs and ultra-fast NVMe SSD storage.
           </p>
 
-          {/* Capsule Tabs for Pricing Options */}
-          <>
+  {/* Capsule Tabs for Pricing Options */}
+          <CapsuleTabs>
             {/* Pay as you go Tab */}
             <div label="Pay as you go">
-              <div className="overflow-x-auto mt-12">
-                <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <Wallet className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Pay as you go
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense Plus</th>
@@ -171,20 +159,8 @@ export default function MemoryDensePlus() {
 
             {/* Reserved Instances Tab */}
             <div label="Reserved Instances">
-              <div className="overflow-x-auto mt-12">
-                <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <ShieldCheck className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Reserved Instances
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense Plus</th>
@@ -217,7 +193,7 @@ export default function MemoryDensePlus() {
                 </table>
               </div>
             </div>
-          </>
+          </CapsuleTabs>
         </div>
       </div>
     </div>
