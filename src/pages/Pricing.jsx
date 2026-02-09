@@ -32,31 +32,31 @@ const Pricing = ({ bannerHeight }) => {
 
   const pricings = [
     {
-      id: "section1",
+      id: "extra-cpu-optimized",
       title: "Extra CPU Optimized",
       description: "Start at 24 MMK/hour",
       icon: <Zap className="w-7 h-7" />,
     },
     {
-      id: "section2",
+      id: "cpu-optimized",
       title: "CPU Optimized",
       description: "Start at 40 MMK/hour",
       icon: <Cpu className="w-7 h-7" />,
     },
     {
-      id: "section3",
+      id: "balance",
       title: "Balance",
       description: "Start at 72 MMK/ hour",
       icon: <PieChart className="w-7 h-7" />,
     },
     {
-      id: "section4",
+      id: "memory-dense",
       title: "Memory Dense",
       description: "Start at 104 MMK/hour",
       icon: <Server className="w-7 h-7" />,
     },
     {
-      id: "section5",
+      id: "memory-dense-plus",
       title: "Memory Dense Plus",
       description: "Start at 136 MMK/hour",
       icon: <Database className="w-7 h-7" />,
@@ -185,19 +185,19 @@ const Pricing = ({ bannerHeight }) => {
           </div>
 
           <div className="w-4/5">
-            <section id="section1" className="scroll-mt-16">
+            <section id="extra-cpu-optimized" className="scroll-mt-16">
               <ExtraCPUOptimized />
             </section>
-            <section id="section2" className="scroll-mt-16">
+            <section id="cpu-optimized" className="scroll-mt-16">
               <CPUOptimized />
             </section>
-            <section id="section3" className="scroll-mt-16">
+            <section id="balance" className="scroll-mt-16">
               <Balance />
             </section>
-            <section id="section4" className="scroll-mt-16">
+            <section id="memory-dense" className="scroll-mt-16">
               <MemoryDense />
             </section>
-            <section id="section5" className="scroll-mt-16">
+            <section id="memory-dense-plus" className="scroll-mt-16">
               <MemoryDensePlus />
             </section>
           </div>
