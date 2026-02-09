@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import { IoIosPricetags } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Wallet } from "lucide-react";
 
 // Tab component for individual tab buttons
 const Tab = ({ label, active, onClick }) => {
   return (
     <button
       className={`px-4 py-2 rounded-full text-sm md:text-base transition-colors ${active
-        ? "bg-gray-200 text-black font-semibold shadow-md hover:bg-secondary hover:text-white"
-        : "text-gray-700 hover:bg-secondary hover:text-white"
+          ? "bg-gray-200 text-black font-semibold shadow-md hover:bg-secondary hover:text-white"
+          : "text-gray-700 hover:bg-secondary hover:text-white"
         }`}
       onClick={onClick}
     >
@@ -80,18 +79,26 @@ const reservedinstances = [
   { md: "eMD24", vcpu: "24", ram: "192", priceYr: "23,897,280" },
 ];
 
-export default function MemoryDensePlus() {
-
+export default function MemoryDensePlus({ bannerHeight }) {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yOffset = bannerHeight;
+        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [hash, bannerHeight]);
   return (
     <div className="min-h-screen" id="memory-dense-plus">
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto pb-10 px-4 sm:px-6 lg:px-8">
         <div>
           {/* Introductory Text */}
           <div>
-            <h1 className="text-secondary font-extrabold text-3xl pb-6">Memory Dense Plus</h1>
-
             <p className="text-secondary">
               Experience ultra-fast NVMe SSD storage with the flexibility to
               choose the exact size you need. Scale effortlessly and enjoy high
@@ -116,23 +123,11 @@ export default function MemoryDensePlus() {
           </p>
 
           {/* Capsule Tabs for Pricing Options */}
-          <>
+          <CapsuleTabs>
             {/* Pay as you go Tab */}
             <div label="Pay as you go">
-              <div className="overflow-x-auto mt-12">
-                <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <Wallet className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Pay as you go
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense Plus</th>
@@ -171,20 +166,8 @@ export default function MemoryDensePlus() {
 
             {/* Reserved Instances Tab */}
             <div label="Reserved Instances">
-              <div className="overflow-x-auto mt-12">
-                <div className="flex">
-                  <div className="flex gap-2 mb-4">
-                    <ShieldCheck className="text-secondary" />
-                    <p className="
-                      font-bold text-xl
-                      bg-gradient-to-r from-secondary to-accent
-                      bg-clip-text text-transparent
-                    ">
-                      Reserved Instances
-                    </p>
-                  </div>
-                </div>
-                <table className="min-w-full text-center">
+              <div className="overflow-x-auto">
+                <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Memory Dense Plus</th>
@@ -217,7 +200,7 @@ export default function MemoryDensePlus() {
                 </table>
               </div>
             </div>
-          </>
+          </CapsuleTabs>
         </div>
       </div>
     </div>
