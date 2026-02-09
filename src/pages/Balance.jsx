@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IoIosPricetags } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ShieldCheck, Wallet } from "lucide-react";
 
 // Tab component for rendering individual tabs
 const Tab = ({ label, active, onClick }) => {
@@ -79,25 +80,17 @@ const reservedinstances = [
   { balance: "BL24", vcpu: "24", ram: "96", priceYr: "12,684,480" },
 ];
 
-export default function Balance({ bannerHeight }) {
-  const { hash } = useLocation();
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const yOffset = bannerHeight;
-        const y = element.getBoundingClientRect().top + window.pageYOffset - yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    }
-  }, [hash, bannerHeight]);
+export default function Balance() {
+
   return (
     <div className="min-h-screen" id="balance">
       {/* Main content */}
-      <div className="max-w-7xl mx-auto pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div>
           {/* Introductory text */}
           <div>
+            <h1 className="text-secondary font-extrabold text-3xl pb-6">Balance</h1>
+
             <p className="text-secondary">
               Experience ultra-fast NVMe SSD storage with the flexibility to
               choose the exact size you need. Scale effortlessly and enjoy high
@@ -122,11 +115,23 @@ export default function Balance({ bannerHeight }) {
           </p>
 
           {/* CapsuleTabs for switching between "Pay as you go" and "Reserved Instances" */}
-          <CapsuleTabs>
+          <>
             {/* Pay as you go tab */}
             <div label="Pay as you go">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <div className="flex gap-2 mb-4">
+                    <Wallet className="text-secondary" />
+                    <p className="
+                      font-bold text-xl
+                      bg-gradient-to-r from-secondary to-accent
+                      bg-clip-text text-transparent
+                    ">
+                      Pay as you go
+                    </p>
+                  </div>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Balance</th>
@@ -164,8 +169,20 @@ export default function Balance({ bannerHeight }) {
 
             {/* Reserved Instances tab */}
             <div label="Reserved Instances">
-              <div className="overflow-x-auto">
-                <table className="min-w-full text-center mt-12">
+              <div className="overflow-x-auto mt-12">
+                <div className="flex">
+                  <div className="flex gap-2 mb-4">
+                    <ShieldCheck className="text-secondary" />
+                    <p className="
+                      font-bold text-xl
+                      bg-gradient-to-r from-secondary to-accent
+                      bg-clip-text text-transparent
+                    ">
+                      Reserved Instances
+                    </p>
+                  </div>
+                </div>
+                <table className="min-w-full text-center">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
                       <th className="p-3">Balance</th>
@@ -198,7 +215,7 @@ export default function Balance({ bannerHeight }) {
                 </table>
               </div>
             </div>
-          </CapsuleTabs>
+          </>
         </div>
       </div>
     </div>

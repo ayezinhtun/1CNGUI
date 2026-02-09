@@ -141,6 +141,8 @@ const Pricing = ({ bannerHeight }) => {
                 )}
               </ul>
             </nav>
+
+
           </div>
 
           <div className="w-3/4">

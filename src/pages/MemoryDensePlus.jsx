@@ -93,9 +93,33 @@ export default function MemoryDensePlus({ bannerHeight }) {
   }, [hash, bannerHeight]);
   return (
     <div className="min-h-screen" id="memory-dense-plus">
+      {/* Page Header */}
+      <div
+        className="relative h-64 text-center flex items-center py-10 md:py-14"
+        style={{
+          backgroundColor: "#283E80", // Custom background color
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Ccircle cx='100' cy='100' r='80' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='300' cy='200' r='120' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='500' cy='50' r='60' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='700' cy='300' r='100' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='200' cy='350' r='90' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ccircle cx='600' cy='150' r='70' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E")`,
+          backgroundSize: "cover", // Cover the entire banner
+          backgroundPosition: "center", // Center the pattern
+          backgroundRepeat: "no-repeat", // Prevent repetition
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+
+        {/* Header Text */}
+        <p className="text-white text-sm sm:text-lg max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8 relative z-10">
+          <a href="https://portal.1cloudng.com/login" target="_blank" className="text-2xl font-bold">
+            Deploy
+          </a>{" "}
+          high-performance cloud instances with ultra-fast NVMe SSD storage and
+          flexible, pay-as-you-go pricing. Experience blazing-fast speeds, low
+          latency, cost-effective and reliable Cloud Solutions with 99.95% Uptime
+          Guarantee, —powered by One Cloud Next-Gen.
+        </p>
+      </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div>
           {/* Introductory Text */}
           <div>
