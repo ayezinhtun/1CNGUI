@@ -48,7 +48,7 @@ export default function CloudCompute() {
   }, [index, isDeleting, text]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-20">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
