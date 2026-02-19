@@ -8,7 +8,7 @@ const AboutUs = () => {
  
 
   return (
-    <div>
+    <div className="pt-20">
       {/* Who We Are and Our Mission Section */}
       <section className="lg:h-screen flex flex-col lg:justify-evenly not-justify-evenly max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Who We Are */}
