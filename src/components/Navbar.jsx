@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
 import { Link } from "react-router-dom";
 
-const Navbar = forwardRef(({ bannerHeight }, ref) => {
+const Navbar = ({bannerHeight}) => {
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for resources dropdown toggle
@@ -14,21 +14,6 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
   const desktopDropdownRef = useRef(null); // Separate ref for desktop
   const mobileDropdownRef = useRef(null); // Separate ref for mobile
 
-  const [sticky, setSticky] = useState(false);
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY >= bannerHeight) {
-        setSticky(true); // fix navbar at top
-      } else {
-        setSticky(false); // normal navbar
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [bannerHeight]);
 
   // Toggle mobile menu visibility
   const toggleMobileMenu = () => {
@@ -74,9 +59,11 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
   }, []);
 
   return (
+    
     <nav
-      className={`w-full z-50 bg-white transition-all duration-300 ${sticky ? "fixed top-0 shadow-md" : "relative"
-        }`}
+      className={`navbar text-primary fixed w-full z-50 ${
+        scrolled ? "scrolled" : ""
+      }`}
     >
 
 
@@ -98,7 +85,11 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
                 Home
               </div>
             </Link>
-
+            <Link to="/about-us">
+              <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
+                About Us
+              </div>
+            </Link>
             <Link to="/products">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
                 Products
@@ -123,8 +114,9 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
               >
                 Resources
                 <svg
-                  className={`w-4 h-4 ml-1 transition-transform ${isResourcesOpen ? "transform rotate-180" : ""
-                    }`}
+                  className={`w-4 h-4 ml-1 transition-transform ${
+                    isResourcesOpen ? "transform rotate-180" : ""
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -141,14 +133,13 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
 
               {/* Dropdown menu */}
               {isResourcesOpen && (
-                <div className="absolute right-0 mt-2 w-[220px] bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
                   <Link
                     to="#"
-                    disabled
-                    className="block w-full text-left px-4 py-2 text-gray-800 cursor-not-allowed"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
-                    Best Practise
+                    Tutorials
                   </Link>
                   <Link
                     to="/faq"
@@ -157,40 +148,16 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
                   >
                     FAQ
                   </Link>
-                  <a
-                    // to="https://docs.1cloudng.com/"
-                    href="https://docs.1cloudng.com/"
-                    rel="doc"
-                    target="_blank"
+                  <Link
+                    to="#"
                     className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     onClick={() => setIsResourcesOpen(false)}
                   >
                     Product Docs
-                  </a>
-
-                  <a
-                    // to="https://docs.1cloudng.com/"
-                    href="/files/1CNG_Cloud_Services_Agreement.pdf"
-                    rel="doc"
-                    target="_blank"
-                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    onClick={() => setIsResourcesOpen(false)}
-                  >
-                    Cloud Service Agreement
-                  </a>
-
-
-
+                  </Link>
                 </div>
               )}
             </div>
-
-
-            <Link to="/about-us">
-              <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
-                About Us
-              </div>
-            </Link>
 
             <Link to="/contact-us">
               <div className="hover:text-primaryHover px-3 py-2 rounded-md text-md font-medium">
@@ -202,15 +169,12 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
           {/* Auth links on the right (hidden on mobile) */}
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
             <a
-              target="_blank"
               href="https://portal.1cloudng.com/login"
               className="bg-primary hover:shadow-sm hover:bg-transparent hover:border hover:border-primary hover:text-primary text-white px-4 py-2 rounded-lg text-md font-medium"
             >
               Sign In
             </a>
-
             <a
-              target="_blank"
               href="https://portal.1cloudng.com/register"
               className="ml-4 bg-primary hover:shadow-sm hover:bg-transparent hover:border hover:border-primary hover:text-primary text-white px-4 py-2 rounded-lg text-md font-medium"
             >
@@ -302,8 +266,9 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
             >
               Resources
               <svg
-                className={`w-4 h-4 ml-1 transition-transform ${isResourcesOpen ? "transform rotate-180" : ""
-                  }`}
+                className={`w-4 h-4 ml-1 transition-transform ${
+                  isResourcesOpen ? "transform rotate-180" : ""
+                }`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -366,6 +331,6 @@ const Navbar = forwardRef(({ bannerHeight }, ref) => {
       </div>
     </nav>
   );
-});
+};
 
 export default Navbar;
