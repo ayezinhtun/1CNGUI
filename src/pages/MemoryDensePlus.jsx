@@ -90,7 +90,7 @@ export default function MemoryDensePlus() {
         <div>
           {/* Introductory Text */}
           <div>
-            <h1 className="text-secondary font-extrabold text-3xl pb-6">Memory Dense Plus</h1>
+            <h1 className="text-secondary font-extrabold text-3xl pb-6">Extra Memory Dense</h1>
 
             <p className="text-secondary">
               Experience ultra-fast NVMe SSD storage with the flexibility to
@@ -112,7 +112,7 @@ export default function MemoryDensePlus() {
 
           {/* Description */}
           <p className="mt-8 text-secondary">
-            Memory-Dense Plus Instances offer a 1:8 CPU-to-memory ratio, providing maximum memory capacity for the most demanding workloads. With high-performance CPUs and ultra-fast NVMe SSD storage.
+            Extra Memory Dense Instances offer a 1:8 CPU-to-memory ratio, providing maximum memory capacity for the most demanding workloads. With high-performance CPUs and ultra-fast NVMe SSD storage.
           </p>
 
   {/* Capsule Tabs for Pricing Options */}
@@ -123,7 +123,7 @@ export default function MemoryDensePlus() {
                 <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
-                      <th className="p-3">Memory Dense Plus</th>
+                      <th className="p-3">Extra Memory Dense</th>
                       <th className="p-3">vCPU (cores)</th>
                       <th className="p-3">Ram (GiB)</th>
                       <th className="p-3">MMK/Hour</th>
@@ -163,7 +163,7 @@ export default function MemoryDensePlus() {
                 <table className="min-w-full text-center mt-12">
                   <thead>
                     <tr className="bg-secondary text-white border-b border-primary/10">
-                      <th className="p-3">Memory Dense Plus</th>
+                      <th className="p-3">Extra Memory Dense</th>
                       <th className="p-3">vCPU (cores)</th>
                       <th className="p-3">Ram (GiB)</th>
                       <th className="p-3">Reserved 1 Year</th>

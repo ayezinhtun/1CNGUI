@@ -12,7 +12,7 @@ export function Layout({ children }) {
 
       
       
-      <AnnouncementBanner onBannerHeight={setBannerHeight} />
+      {/* <AnnouncementBanner onBannerHeight={setBannerHeight} /> */}
       {/* <AnnouncementBanner/> */}
       {/* <Navbar/> */}
         <Navbar bannerHeight={bannerHeight} />

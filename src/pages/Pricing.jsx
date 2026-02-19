@@ -57,7 +57,7 @@ const Pricing = ({ bannerHeight }) => {
     },
     {
       id: "memory-dense-plus",
-      title: "Memory Dense Plus",
+      title: "Extra Memory Dense",
       description: "Start at 136 MMK/hour",
       icon: <Database className="w-7 h-7" />,
     }

@@ -58,7 +58,6 @@ const products = [
 ];
 
 export default function Products() {
-  
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -97,9 +96,25 @@ export default function Products() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              {/* Conditional rendering for "Cloud Compute" */}
               {product.title === "Cloud Compute" ? (
                 <Link to="/cloudcompute">
+                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105">
+                    <div className="p-6">
+                      {product.icon}
+                      <h2 className="text-2xl font-semibold text-primary mt-4">
+                        {product.title}
+                      </h2>
+                      <p className="text-secondary mt-2">
+                        {product.description}
+                      </p>
+                      <button className="mt-4 bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-[#e69900]">
+                        Learn More
+                      </button>
+                    </div>
+                  </div>
+                </Link>
+              ) : product.title === "Block Storage" ? (
+                <Link to="/pricing">
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all hover:scale-105">
                     <div className="p-6">
                       {product.icon}
@@ -123,9 +138,7 @@ export default function Products() {
                     <h2 className="text-2xl font-semibold text-primary mt-4">
                       {product.title}
                     </h2>
-                    <p className="text-secondary mt-2">
-                      {product.description}
-                    </p>
+                    <p className="text-secondary mt-2">{product.description}</p>
                     <button
                       disabled
                       className="mt-4 bg-accent text-white font-medium px-4 py-2 rounded-lg hover:bg-[#e69900]"
