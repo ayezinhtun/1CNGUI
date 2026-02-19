@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 const ContactUs = () => {
   
   return (
-    <div id='contact' className="min-h-screen">
+    <div id='contact' className="min-h-screen pt-20">
       {/* Page Header */}
       <div
         className="relative h-64 text-center flex flex-col justify-center items-center py-10 md:py-14"
