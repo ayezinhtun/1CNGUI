@@ -1,8 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/OneCloud-Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+function downloadFile(filename) {
+  const fileUrl = `/${filename}`;
+
+  fetch(fileUrl)
+    .then((res) => res.blob())
+    .then((blob) => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    })
+    .catch((err) => console.error("Download failed:", err));
+}
 
 const Navbar = ({ bannerHeight }) => {
+
+  const navigate = useNavigate();
+
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State for resources dropdown toggle
@@ -56,6 +77,21 @@ const Navbar = ({ bannerHeight }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+
+    // Match /resource/<filename> pattern
+    const match = pathname.match(/^\/resource\/(.+)$/);
+
+    if (match) {
+      const filename = match[1];
+      downloadFile(filename);
+
+      // Redirect to home after download starts
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <nav
@@ -165,6 +201,17 @@ const Navbar = ({ bannerHeight }) => {
                   >
                     Cloud Service Agreement
                   </a>
+
+                  {/* <a
+                    // to="https://docs.1cloudng.com/"
+                    href="/resource/103_124_184_23.csv"
+                    rel="doc"
+                    target="_blank"
+                    className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    onClick={() => setIsResourcesOpen(false)}
+                  >
+                    Host Location
+                  </a> */}
                 </div>
               )}
             </div>
