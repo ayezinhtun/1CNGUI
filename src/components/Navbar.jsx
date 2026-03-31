@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../assets/OneCloud-Logo.png";
+import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 function downloadFile(filename) {
@@ -104,7 +104,7 @@ const Navbar = ({ bannerHeight }) => {
           {/* Logo on the left */}
           <div className="flex-shrink-0">
             <Link to="/" className="text-xl font-bold ">
-              <img src={logo} className="w-40" alt="OneCloud Logo" />
+              <img src={logo} className="w-32" alt="OneCloud Logo" />
             </Link>
           </div>
 
