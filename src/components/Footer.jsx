@@ -9,7 +9,7 @@ const Footer = () => {
         <div className='text-center md:text-left'>
           <h3 className="text-xl font-bold mb-4">About Us</h3>
           <p className="text-white">
-          One Cloud Next Generation is a leading local cloud service provider of One Cloud Technology Co., Ltd in Myanmar.
+          One Cloud Next-Gen is a leading local cloud service provider of One Cloud Technology Co., Ltd in Myanmar.
 
           </p>
         </div>
@@ -96,7 +96,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-600 mt-8 pt-8 text-center px-4 sm:px-6 lg:px-8">
         <p className="text-white">
-          © {new Date().getFullYear()} One Cloud Next Generation. All rights reserved.
+          © {new Date().getFullYear()} One Cloud Next-Gen. All rights reserved.
         </p>
       </div>
     </footer>

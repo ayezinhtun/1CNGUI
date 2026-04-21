@@ -23,7 +23,7 @@ const AboutUs = () => {
           </motion.h1>
           {/* Description of the company */}
           <p className=" text-secondary text-lg">
-            <span className="font-bold">One Cloud Next Gen (1CNG)</span> is a
+            <span className="font-bold">One Cloud Next-Gen (1CNG)</span> is a
             trusted <span className="font-bold">local cloud provider</span>{" "}
             offering reliable, high-performance infrastructure designed to serve
             businesses across Myanmar. We focus on delivering{" "}

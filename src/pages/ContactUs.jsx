@@ -30,7 +30,7 @@ const ContactUs = () => {
         </motion.h1>
         {/* Subtitle */}
         <p className="text-white mt-4 text-sm md:text-lg px-4 sm:px-6 lg:px-8 relative z-10">
-          Start Your IaaS Journey with <span className='font-bold'>One Cloud Next Generation</span> Today!<br />
+          Start Your IaaS Journey with <span className='font-bold'>One Cloud Next-Gen</span> Today!<br />
           Experience Fast, Reliable, and Affordable Cloud Solutions!
         </p>
       </div>
