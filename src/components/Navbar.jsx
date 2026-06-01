@@ -2,23 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
-function downloadFile(filename) {
-  const fileUrl = `/${filename}`;
+// function downloadFile(filename) {
+//   const fileUrl = `/${filename}`;
 
-  fetch(fileUrl)
-    .then((res) => res.blob())
-    .then((blob) => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    })
-    .catch((err) => console.error("Download failed:", err));
-}
+//   fetch(fileUrl)
+//     .then((res) => res.blob())
+//     .then((blob) => {
+//       const url = URL.createObjectURL(blob);
+//       const a = document.createElement("a");
+//       a.href = url;
+//       a.download = filename;
+//       document.body.appendChild(a);
+//       a.click();
+//       document.body.removeChild(a);
+//       URL.revokeObjectURL(url);
+//     })
+//     .catch((err) => console.error("Download failed:", err));
+// }
 
 const Navbar = ({ bannerHeight }) => {
 
@@ -78,20 +78,20 @@ const Navbar = ({ bannerHeight }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const pathname = window.location.pathname;
+  // useEffect(() => {
+  //   const pathname = window.location.pathname;
 
-    // Match /resource/<filename> pattern
-    const match = pathname.match(/^\/resource\/(.+)$/);
+  //   // Match /resource/<filename> pattern
+  //   const match = pathname.match(/^\/resource\/(.+)$/);
 
-    if (match) {
-      const filename = match[1];
-      downloadFile(filename);
+  //   if (match) {
+  //     const filename = match[1];
+  //     downloadFile(filename);
 
-      // Redirect to home after download starts
-      navigate('/');
-    }
-  }, [navigate]);
+  //     // Redirect to home after download starts
+  //     // navigate('/');
+  //   }
+  // }, []);
 
   return (
     <nav
