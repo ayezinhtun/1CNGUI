@@ -62,7 +62,7 @@ const Footer = () => {
           <h3 className="text-xl font-bold mb-4">Contact Info</h3>
           <ul className="text-white">
             <li className="mb-2">
-              <span className="font-semibold">Email:</span> sales@1cloudng.com, support@1cloudng.com
+              <span className="font-semibold">Email:</span> sales@1cloudng.com, support@system.1cloudng.com
 
             </li>
             <li className="mb-2">
